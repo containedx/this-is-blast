@@ -15,6 +15,7 @@ public class Block : MonoBehaviour
     public UnityEvent<Block> onBlockShot;
 
     public BlockColor blockColor = BlockColor.Red;
+    [SerializeField] private float blockSize = 0.6f;
 
     [Header("Materials for colors")]
     [SerializeField] private Material redMaterial;
@@ -22,6 +23,12 @@ public class Block : MonoBehaviour
     [SerializeField] private Material greenMaterial;
     [SerializeField] private Material pinkMaterial;
     private MeshRenderer mr;
+
+    private bool moveDown = false;
+    private bool moveScale = false;
+    private Vector3 targetPosition;
+    private Vector3 targetScale;
+    private float moveSpeed = 5f;
 
     private void Awake()
     {
@@ -31,6 +38,27 @@ public class Block : MonoBehaviour
     private void OnDestroy()
     {
         onBlockShot.RemoveAllListeners();
+    }
+
+    private void Update()
+    {
+        if(moveDown)
+        {
+            transform.position = Vector3.Lerp(transform.position, targetPosition, moveSpeed * Time.deltaTime);
+
+            if (Vector3.Distance(transform.position, targetPosition) < 0.01f)
+            {
+                transform.position = targetPosition;
+                moveDown = false;
+            }
+        }
+    }
+
+    public void MoveDown()
+    {
+        moveDown = true;
+        targetPosition = transform.position;
+        targetPosition.z -= blockSize;
     }
 
     private void OnCollisionEnter(Collision collision)

@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using UnityEngine;
 
 
 [System.Serializable]
@@ -35,6 +36,14 @@ public class ColumnBlocks
         blocks.Remove(block);
         isProcessing = false;
 
-        // TODO: move column down
+        MoveColumnDown();
+    }
+
+    private void MoveColumnDown()
+    {
+        foreach(var block in blocks)
+        {
+            block.MoveDown();
+        }
     }
 }
