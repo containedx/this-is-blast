@@ -1,4 +1,6 @@
+using System;
 using UnityEngine;
+using UnityEngine.Events;
 
 public enum BlockColor
 {
@@ -10,21 +12,44 @@ public enum BlockColor
 
 public class Block : MonoBehaviour
 {
-    private MeshRenderer mr;
+    public UnityEvent<Block> onBlockShot;
+
+    public BlockColor blockColor = BlockColor.Red;
 
     [Header("Materials for colors")]
     [SerializeField] private Material redMaterial;
     [SerializeField] private Material blueMaterial;
     [SerializeField] private Material greenMaterial;
     [SerializeField] private Material pinkMaterial;
+    private MeshRenderer mr;
 
     private void Awake()
     {
         mr = GetComponent<MeshRenderer>();
     }
 
+    private void OnDestroy()
+    {
+        onBlockShot.RemoveAllListeners();
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        var projectile = collision.gameObject.GetComponent<Projectile>();
+        if (projectile == null) return;
+
+        if (projectile.target == this)
+        {
+            Destroy(collision.gameObject);
+            onBlockShot?.Invoke(this);
+            BeginRemoveBlock();
+        }
+    }
+
     public void SetColor(BlockColor color)
     {
+        blockColor = color;
+
         switch (color)
         {
             case BlockColor.Red:
@@ -41,5 +66,10 @@ public class Block : MonoBehaviour
                 break;
 
         }
+    }
+
+    private void BeginRemoveBlock()
+    {
+        Destroy(gameObject, 0.1f);
     }
 }

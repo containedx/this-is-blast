@@ -1,21 +1,19 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class LevelInitializer : MonoBehaviour
 {
     [SerializeField] private Block blockPrefab;
-    [SerializeField] private LevelData levelData;
     [SerializeField] private float cellSize = 0.5f;
 
-    private void Awake()
+    public List<ColumnBlocks> InitBlocks(LevelData levelData)
     {
-        InitBlocks();
-    }
+        List<ColumnBlocks> levelBlocks = new();
 
-    private void InitBlocks()
-    {
         for (int col = 0; col < levelData.columns.Count; col++)
         {
             var column = levelData.columns[col];
+            List<Block> columnBlocks = new();
 
             for (int row = 0; row < column.blocks.Count; row++)
             {
@@ -30,7 +28,13 @@ public class LevelInitializer : MonoBehaviour
                 );
 
                 block.SetColor(color);
+                block.gameObject.name = "block" + row;
+                columnBlocks.Add(block);
             }
+
+            levelBlocks.Add(new ColumnBlocks(columnBlocks));
         }
+
+        return levelBlocks;
     }
 }

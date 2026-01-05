@@ -249,7 +249,6 @@ GameObject:
   - component: {fileID: 8536484803300250259}
   - component: {fileID: 9046918196693566830}
   - component: {fileID: 1887328015106393291}
-  - component: {fileID: 2195071390912923673}
   - component: {fileID: 6649693151987518190}
   m_Layer: 0
   m_Name: Shooter
@@ -330,27 +329,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &2195071390912923673
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8572618494748153650}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &6649693151987518190
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -363,4 +341,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0803645b52df6a74f84808ec4ab2dc55, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Shooter
+  projectilesCount: 20
+  blockColor: 0
   projectilePrefab: {fileID: 3118363972341836695, guid: ccd4a8b2b2fb7664f8f2576674963346, type: 3}
+  countText: {fileID: 7286759085249965571}
