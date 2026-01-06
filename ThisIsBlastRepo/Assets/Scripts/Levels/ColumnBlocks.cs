@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -16,11 +17,14 @@ public class ColumnBlocks
         {
             block.onBlockShot.AddListener(OnBlockShot);
         }
+
+        // it is enough to listen to one block finishing moving down
+        blocks[0].onMoveDownFinished.AddListener(FinishProcessing);
     }
 
     public Block TryToFindTarget(BlockColor color)
     {
-        if (isProcessing) return null;
+        if (isProcessing || blocks.Count == 0) return null;
 
         var bottomBlock = blocks[blocks.Count - 1];
         if (bottomBlock.blockColor == color)
@@ -34,8 +38,6 @@ public class ColumnBlocks
     private void OnBlockShot(Block block)
     {
         blocks.Remove(block);
-        isProcessing = false;
-
         MoveColumnDown();
     }
 
@@ -45,5 +47,10 @@ public class ColumnBlocks
         {
             block.MoveDown();
         }
+    }
+
+    private void FinishProcessing()
+    {
+        isProcessing = false;
     }
 }

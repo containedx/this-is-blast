@@ -12,7 +12,8 @@ public enum BlockColor
 
 public class Block : MonoBehaviour
 {
-    public UnityEvent<Block> onBlockShot;
+    public UnityEvent<Block> onBlockShot = new UnityEvent<Block>();
+    public UnityEvent onMoveDownFinished = new UnityEvent();
 
     public BlockColor blockColor = BlockColor.Red;
     [SerializeField] private float blockSize = 0.6f;
@@ -38,6 +39,7 @@ public class Block : MonoBehaviour
     private void OnDestroy()
     {
         onBlockShot.RemoveAllListeners();
+        onMoveDownFinished.RemoveAllListeners();
     }
 
     private void Update()
@@ -50,6 +52,7 @@ public class Block : MonoBehaviour
             {
                 transform.position = targetPosition;
                 moveDown = false;
+                onMoveDownFinished?.Invoke();
             }
         }
     }
