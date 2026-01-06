@@ -32,17 +32,24 @@ public class Shooter : MonoBehaviour
     private void Awake()
     {
         meshRenderer = GetComponent<MeshRenderer>();
-        meshRenderer.material = materials.GetMaterial(blockColor);
-        countText.text = projectilesCount.ToString();
         activateButton.onClick.AddListener(Activate);
-        activeOutline.color = materials.GetMaterial(blockColor).color;
-        ActivateOutline(false);
         SetState(new InactiveState());
     }
 
     private void Update()
     {
         currentState?.Update();
+    }
+
+    public void Setup(ShooterData shooterData)
+    {
+        blockColor = shooterData.blockColor;
+        projectilesCount = shooterData.projectiles;
+
+        activeOutline.color = materials.GetMaterial(blockColor).color;
+        meshRenderer.material = materials.GetMaterial(blockColor);
+        countText.text = projectilesCount.ToString();
+        ActivateOutline(false);
     }
 
     public void SetState(IShooterState newState)

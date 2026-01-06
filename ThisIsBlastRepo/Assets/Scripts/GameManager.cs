@@ -22,7 +22,7 @@ public class GameManager : MonoBehaviour
         Instance = this;
         #endregion
 
-        currentLevelBlocks = LevelInitializer.InitBlocks(levelData);
+        currentLevelBlocks = LevelInitializer.InitLevel(levelData);
         currentLevelAllBlocksCount = GetBlocksCount();
     }
 
