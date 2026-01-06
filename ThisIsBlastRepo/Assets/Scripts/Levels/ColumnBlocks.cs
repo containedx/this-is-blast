@@ -22,6 +22,11 @@ public class ColumnBlocks
         blocks[0].onMoveDownFinished.AddListener(FinishProcessing);
     }
 
+    public int GetBlocksCount()
+    {
+        return blocks.Count;
+    }
+
     public bool IsEmpty()
     {
         return blocks.Count == 0;

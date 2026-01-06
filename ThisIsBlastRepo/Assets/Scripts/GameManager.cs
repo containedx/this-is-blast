@@ -9,6 +9,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private LevelData levelData;
 
     public List<ColumnBlocks> currentLevelBlocks;
+    private int currentLevelAllBlocksCount = 0;
 
     private void Awake()
     {
@@ -22,5 +23,21 @@ public class GameManager : MonoBehaviour
         #endregion
 
         currentLevelBlocks = LevelInitializer.InitBlocks(levelData);
+        currentLevelAllBlocksCount = GetBlocksCount();
+    }
+
+    public int GetBlocksCount()
+    {
+        int count = 0;
+        foreach (var column in currentLevelBlocks)
+        {
+            count += column.GetBlocksCount();
+        }
+        return count;
+    }
+
+    public int GetInitialBlocksCount()
+    {
+        return currentLevelAllBlocksCount;
     }
 }
