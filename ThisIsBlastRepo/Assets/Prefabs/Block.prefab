@@ -124,6 +124,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e00d1bd1b3e82d3459277d955fe617bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Block
+  onBlockShot:
+    m_PersistentCalls:
+      m_Calls: []
+  onMoveDownFinished:
+    m_PersistentCalls:
+      m_Calls: []
+  blockColor: 0
+  cellSize: 0.65
   redMaterial: {fileID: 2100000, guid: 27ce4bcadc59c1544a769deb59d51524, type: 2}
   blueMaterial: {fileID: 2100000, guid: 312a01a63e6169f44bcc407b84118b2b, type: 2}
   greenMaterial: {fileID: 2100000, guid: b9c72b290701d5542b6a07b77157f384, type: 2}

@@ -28,21 +28,24 @@ public class ActiveState : IShooterState
 
         if (shooter.projectilesCount == 0) ShooterFinished();
 
+        LerpTowardTarget();
+
         shootTimer -= Time.deltaTime;
         if (shootTimer > 0f) return;
 
         shootTimer = shooter.cooldownTime;
         FindNextTarget();
-
-        LerpTowardTarget();
     }
 
     private void LerpTowardTarget()
     {
-        if (shootTarget == null) return;
-
-        Vector3 direction = shootTarget.position - shooter.transform.position;
-        direction.y = 0;
+        // if shoot target is null go back to neutral
+        Vector3 direction = new Vector3(0f,0f,0f);
+        if(shootTarget != null )
+        {
+            direction = shootTarget.position - shooter.transform.position;
+            direction.y = 0;
+        }
 
         Quaternion targetRotation = Quaternion.LookRotation(direction);
         shooter.transform.rotation = Quaternion.Slerp(shooter.transform.rotation, targetRotation, 5f * Time.deltaTime);
@@ -50,6 +53,7 @@ public class ActiveState : IShooterState
 
     private void FindNextTarget()
     {
+        shootTarget = null;
         foreach (var column in shooter.levelBlocks)
         {
             var target = column.TryToFindTarget(shooter.blockColor);

@@ -16,7 +16,7 @@ public class Block : MonoBehaviour
     public UnityEvent onMoveDownFinished = new UnityEvent();
 
     public BlockColor blockColor = BlockColor.Red;
-    [SerializeField] private float blockSize = 0.6f;
+    [SerializeField] private float cellSize = 0.65f;
 
     [Header("Materials for colors")]
     [SerializeField] private Material redMaterial;
@@ -48,7 +48,7 @@ public class Block : MonoBehaviour
         {
             transform.position = Vector3.Lerp(transform.position, targetPosition, moveSpeed * Time.deltaTime);
 
-            if (Vector3.Distance(transform.position, targetPosition) < 0.05f)
+            if (Vector3.Distance(transform.position, targetPosition) < 0.01f)
             {
                 transform.position = targetPosition;
                 moveDown = false;
@@ -61,7 +61,7 @@ public class Block : MonoBehaviour
     {
         moveDown = true;
         targetPosition = transform.position;
-        targetPosition.z -= blockSize;
+        targetPosition.z -= cellSize;
     }
 
     private void OnCollisionEnter(Collision collision)
