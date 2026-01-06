@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Android;
 
 public class Shooter : MonoBehaviour
 {
@@ -17,6 +18,8 @@ public class Shooter : MonoBehaviour
     [SerializeField] private TMP_Text countText;
 
     private List<ColumnBlocks> levelBlocks;
+    private Transform shootTarget;
+    private bool active = false;
 
     private void Awake()
     {
@@ -26,12 +29,24 @@ public class Shooter : MonoBehaviour
     public void Activate(List<ColumnBlocks> levelBlocks)
     {
         this.levelBlocks = levelBlocks;
-        StartCoroutine(ShootRoutine());
+        Activate();
     }
 
     public void Activate()
     {
+        active = true;
         StartCoroutine(ShootRoutine());
+    }
+
+    private void Update()
+    {
+        if (!active || shootTarget == null) return;
+
+        Vector3 direction = shootTarget.position - transform.position;
+        direction.y = 0;
+
+        Quaternion targetRotation = Quaternion.LookRotation(direction);
+        transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, 5f * Time.deltaTime);
     }
 
     private IEnumerator ShootRoutine()
@@ -52,16 +67,26 @@ public class Shooter : MonoBehaviour
                 }
             }
         }
+
+        ShooterFinished();
     }
 
     private void Shoot(Block target)
     {
         //Debug.Log("shooting " + target.name);
+        shootTarget = target.transform;
 
         projectilesCount -= 1;
         countText.text = projectilesCount.ToString();
 
         var projectile = Instantiate(projectilePrefab, transform.position, Quaternion.identity);
         projectile.Shoot(target);
+    }
+
+    private void ShooterFinished()
+    {
+        //TODO: animate, shooter move to the side
+        active = false;
+        gameObject.SetActive(false);
     }
 }
