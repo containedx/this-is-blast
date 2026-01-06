@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Drawing;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Android;
@@ -21,6 +22,7 @@ public class Shooter : MonoBehaviour
     [SerializeField] private Button activateButton;
     [SerializeField] private BlockMaterials materials;
     [SerializeField] private Image activeOutline;
+    private MeshRenderer meshRenderer;
 
     [NonSerialized]
     public List<ColumnBlocks> levelBlocks;
@@ -29,6 +31,8 @@ public class Shooter : MonoBehaviour
 
     private void Awake()
     {
+        meshRenderer = GetComponent<MeshRenderer>();
+        meshRenderer.material = materials.GetMaterial(blockColor);
         countText.text = projectilesCount.ToString();
         activateButton.onClick.AddListener(Activate);
         activeOutline.color = materials.GetMaterial(blockColor).color;
