@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -10,7 +11,7 @@ public class Shooter : MonoBehaviour
     [Header("Shooter Settings")]
     public int projectilesCount = 20;
     public BlockColor blockColor = BlockColor.Red;
-    private float cooldownTime = 0.2f;
+    public float cooldownTime = 0.2f;
 
     [Header("Projectile")]
     [SerializeField] private Projectile projectilePrefab;
@@ -19,72 +20,43 @@ public class Shooter : MonoBehaviour
     [SerializeField] private TMP_Text countText;
     [SerializeField] private Button activateButton;
 
-    private List<ColumnBlocks> levelBlocks;
-    private Transform shootTarget;
-    private bool active = false;
+    [NonSerialized]
+    public List<ColumnBlocks> levelBlocks;
+
+    private IShooterState currentState;
 
     private void Awake()
     {
         countText.text = projectilesCount.ToString();
         activateButton.onClick.AddListener(Activate);
+        SetState(new InactiveState());
+    }
+
+    private void Update()
+    {
+        currentState?.Update();
+    }
+
+    public void SetState(IShooterState newState)
+    {
+        currentState?.Exit();
+        currentState = newState;
+        currentState.Enter(this);
     }
 
     public void Activate()
     {
         this.levelBlocks = GameManager.Instance.currentLevelBlocks;
-        active = true;
-        StartCoroutine(ShootRoutine());
+        SetState(new ActiveState());
     }
 
-    private void Update()
+    public void DecreaseCount()
     {
-        if (!active || shootTarget == null) return;
-
-        Vector3 direction = shootTarget.position - transform.position;
-        direction.y = 0;
-
-        Quaternion targetRotation = Quaternion.LookRotation(direction);
-        transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, 5f * Time.deltaTime);
-    }
-
-    private IEnumerator ShootRoutine()
-    {
-        yield return new WaitForSeconds(cooldownTime);
-
-        while(projectilesCount > 0)
-        {
-            foreach (var column in levelBlocks)
-            {
-                var potentialTarget = column.TryToFindTarget(blockColor);
-                //Debug.Log(potentialTarget);
-
-                if (potentialTarget != null)
-                {
-                    Shoot(potentialTarget);
-                    yield return new WaitForSeconds(cooldownTime);
-                }
-            }
-        }
-
-        ShooterFinished();
-    }
-
-    private void Shoot(Block target)
-    {
-        //Debug.Log("shooting " + target.name);
-        shootTarget = target.transform;
-
         projectilesCount -= 1;
         countText.text = projectilesCount.ToString();
-
-        var projectile = ObjectPooler.Instance.SpawnFromPool(PoolObjectType.Projectile, transform.position, Quaternion.identity);
-        projectile.GetComponent<Projectile>().Shoot(target);
     }
 
-    private void ShooterFinished()
-    {
-        //TODO: animate, shooter move to the side
-        active = false;
-        gameObject.SetActive(false);
-    }
+    
+
+    
 }
