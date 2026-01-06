@@ -48,7 +48,7 @@ public class Block : MonoBehaviour
         {
             transform.position = Vector3.Lerp(transform.position, targetPosition, moveSpeed * Time.deltaTime);
 
-            if (Vector3.Distance(transform.position, targetPosition) < 0.01f)
+            if (Vector3.Distance(transform.position, targetPosition) < 0.05f)
             {
                 transform.position = targetPosition;
                 moveDown = false;

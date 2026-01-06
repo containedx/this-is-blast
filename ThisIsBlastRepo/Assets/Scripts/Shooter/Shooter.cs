@@ -11,7 +11,7 @@ public class Shooter : MonoBehaviour
     [Header("Shooter Settings")]
     public int projectilesCount = 20;
     public BlockColor blockColor = BlockColor.Red;
-    public float cooldownTime = 0.2f;
+    public float cooldownTime = 0.1f;
 
     [Header("Projectile")]
     [SerializeField] private Projectile projectilePrefab;

@@ -439,9 +439,17 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 6649693151987518190, guid: 0896a6f5a9266784c9bf3eaee6c6a5f3, type: 3}
+      propertyPath: cooldownTime
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6649693151987518190, guid: 0896a6f5a9266784c9bf3eaee6c6a5f3, type: 3}
+      propertyPath: projectilesCount
+      value: 60
+      objectReference: {fileID: 0}
     - target: {fileID: 8536484803300250259, guid: 0896a6f5a9266784c9bf3eaee6c6a5f3, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.18
+      value: -2.005
       objectReference: {fileID: 0}
     - target: {fileID: 8536484803300250259, guid: 0896a6f5a9266784c9bf3eaee6c6a5f3, type: 3}
       propertyPath: m_LocalPosition.y

@@ -74,6 +74,7 @@ public class ActiveState : IShooterState
 
     private void ShooterFinished()
     {
+        Debug.Log("shooter finished");
         shooter.SetState(new FinishedState());
     }
 
