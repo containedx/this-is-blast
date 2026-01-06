@@ -77,8 +77,8 @@ public class Shooter : MonoBehaviour
         projectilesCount -= 1;
         countText.text = projectilesCount.ToString();
 
-        var projectile = Instantiate(projectilePrefab, transform.position, Quaternion.identity);
-        projectile.Shoot(target);
+        var projectile = ObjectPooler.Instance.SpawnFromPool(PoolObjectType.Projectile, transform.position, Quaternion.identity);
+        projectile.GetComponent<Projectile>().Shoot(target);
     }
 
     private void ShooterFinished()

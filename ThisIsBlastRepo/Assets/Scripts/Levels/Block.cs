@@ -68,7 +68,7 @@ public class Block : MonoBehaviour
 
         if (projectile.target == this)
         {
-            Destroy(collision.gameObject);
+            ObjectPooler.Instance.ReturnToPool(PoolObjectType.Projectile, collision.gameObject);
             onBlockShot?.Invoke(this);
             BeginRemoveBlock();
         }
