@@ -18,12 +18,9 @@ public class Block : MonoBehaviour
     public BlockColor blockColor = BlockColor.Red;
     [SerializeField] private float cellSize = 0.65f;
 
-    [Header("Materials for colors")]
-    [SerializeField] private Material redMaterial;
-    [SerializeField] private Material blueMaterial;
-    [SerializeField] private Material greenMaterial;
-    [SerializeField] private Material pinkMaterial;
-    private MeshRenderer mr;
+    [Header("Block Color Materials")]
+    private MeshRenderer meshRenderer;
+    [SerializeField] private BlockMaterials materials;
 
     private bool moveDown = false;
     private bool moveScale = false;
@@ -33,7 +30,7 @@ public class Block : MonoBehaviour
 
     private void Awake()
     {
-        mr = GetComponent<MeshRenderer>();
+        meshRenderer = GetComponent<MeshRenderer>();
     }
 
     private void OnDestroy()
@@ -81,22 +78,7 @@ public class Block : MonoBehaviour
     {
         blockColor = color;
 
-        switch (color)
-        {
-            case BlockColor.Red:
-                mr.material = redMaterial;
-                break;
-            case BlockColor.Blue:
-                mr.material = blueMaterial;
-                break;
-            case BlockColor.Green:
-                mr.material = greenMaterial;
-                break;
-            case BlockColor.Pink:
-                mr.material = pinkMaterial;
-                break;
-
-        }
+        meshRenderer.material = materials.GetMaterial(color);
     }
 
     private void BeginRemoveBlock()

@@ -132,7 +132,4 @@ MonoBehaviour:
       m_Calls: []
   blockColor: 0
   cellSize: 0.65
-  redMaterial: {fileID: 2100000, guid: 27ce4bcadc59c1544a769deb59d51524, type: 2}
-  blueMaterial: {fileID: 2100000, guid: 312a01a63e6169f44bcc407b84118b2b, type: 2}
-  greenMaterial: {fileID: 2100000, guid: b9c72b290701d5542b6a07b77157f384, type: 2}
-  pinkMaterial: {fileID: 2100000, guid: 5925e5a7d09dd6c4ab09f2a939d2a116, type: 2}
+  materials: {fileID: 11400000, guid: b93c648de45667e4fac25a5f253307b5, type: 2}
