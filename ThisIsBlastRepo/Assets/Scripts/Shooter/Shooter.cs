@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Android;
+using UnityEngine.UI;
 
 public class Shooter : MonoBehaviour
 {
@@ -16,6 +17,7 @@ public class Shooter : MonoBehaviour
 
     [Header("UI")]
     [SerializeField] private TMP_Text countText;
+    [SerializeField] private Button activateButton;
 
     private List<ColumnBlocks> levelBlocks;
     private Transform shootTarget;
@@ -24,16 +26,12 @@ public class Shooter : MonoBehaviour
     private void Awake()
     {
         countText.text = projectilesCount.ToString();
-    }
-
-    public void Activate(List<ColumnBlocks> levelBlocks)
-    {
-        this.levelBlocks = levelBlocks;
-        Activate();
+        activateButton.onClick.AddListener(Activate);
     }
 
     public void Activate()
     {
+        this.levelBlocks = GameManager.Instance.currentLevelBlocks;
         active = true;
         StartCoroutine(ShootRoutine());
     }
