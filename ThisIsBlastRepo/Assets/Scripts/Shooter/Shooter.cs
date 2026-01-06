@@ -29,6 +29,11 @@ public class Shooter : MonoBehaviour
         StartCoroutine(ShootRoutine());
     }
 
+    public void Activate()
+    {
+        StartCoroutine(ShootRoutine());
+    }
+
     private IEnumerator ShootRoutine()
     {
         yield return new WaitForSeconds(cooldownTime);
