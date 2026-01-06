@@ -19,6 +19,8 @@ public class Shooter : MonoBehaviour
     [Header("UI")]
     [SerializeField] private TMP_Text countText;
     [SerializeField] private Button activateButton;
+    [SerializeField] private BlockMaterials materials;
+    [SerializeField] private Image activeOutline;
 
     [NonSerialized]
     public List<ColumnBlocks> levelBlocks;
@@ -29,6 +31,8 @@ public class Shooter : MonoBehaviour
     {
         countText.text = projectilesCount.ToString();
         activateButton.onClick.AddListener(Activate);
+        activeOutline.color = materials.GetMaterial(blockColor).color;
+        ActivateOutline(false);
         SetState(new InactiveState());
     }
 
@@ -56,7 +60,10 @@ public class Shooter : MonoBehaviour
         countText.text = projectilesCount.ToString();
     }
 
-    
+    public void ActivateOutline(bool value)
+    {
+        activeOutline.gameObject.SetActive(value);
+    }
 
     
 }
