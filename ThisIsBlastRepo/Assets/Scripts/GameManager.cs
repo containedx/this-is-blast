@@ -7,7 +7,6 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] private LevelInitializer LevelInitializer;
     [SerializeField] private LevelData levelData;
-    [SerializeField] private Shooter shooter;
 
     public List<ColumnBlocks> currentLevelBlocks;
 

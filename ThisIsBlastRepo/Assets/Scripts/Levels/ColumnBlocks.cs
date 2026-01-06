@@ -22,9 +22,14 @@ public class ColumnBlocks
         blocks[0].onMoveDownFinished.AddListener(FinishProcessing);
     }
 
+    public bool IsEmpty()
+    {
+        return blocks.Count == 0;
+    }
+
     public Block TryToFindTarget(BlockColor color)
     {
-        if (isProcessing || blocks.Count == 0) return null;
+        if (isProcessing || IsEmpty()) return null;
 
         var bottomBlock = blocks[blocks.Count - 1];
         if (bottomBlock.blockColor == color)
