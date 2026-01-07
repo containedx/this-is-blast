@@ -8,22 +8,11 @@ public class LevelInitializer : MonoBehaviour
     [SerializeField] private float cellSize = 0.5f;
 
     [Header("Shooters")]
-    [SerializeField] private Shooter shooterPrefab;
-    [SerializeField] private Transform shooterManager;
+    [SerializeField] private ShooterManager shooterManager;
 
     public List<ColumnBlocks> InitLevel(LevelData levelData)
     {
-        float space = 0f;
-        foreach(var shooterData in levelData.shooters)
-        {
-            Shooter shooter = Instantiate(shooterPrefab, shooterManager);
-            var shooterPos = shooter.transform.position;
-            shooterPos.x += space;
-            shooter.transform.position = shooterPos;
-            space += 3f;
-            shooter.Setup(shooterData);
-        }
-
+        shooterManager.SpawnShooters(levelData);
 
         List<ColumnBlocks> levelBlocks = new();
 

@@ -5,6 +5,7 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "Game/Level Data")]
 public class LevelData : ScriptableObject
 {
+    public int activeShootersCount = 2;
     public List<ShooterData> shooters;
     public List<ColumnData> columns; 
 }
@@ -12,7 +13,7 @@ public class LevelData : ScriptableObject
 [System.Serializable]
 public class ShooterData
 {
-    public int projectiles;
+    public int projectiles = 20;
     public BlockColor blockColor;
 }
 
