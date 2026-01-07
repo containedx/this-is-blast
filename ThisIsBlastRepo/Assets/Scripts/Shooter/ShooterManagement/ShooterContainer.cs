@@ -6,16 +6,17 @@ public class ShooterContainer
 {
     public List<ShooterSlot> slots = new List<ShooterSlot>();
 
-    public void PlaceOntoFirstEmptySlot(Shooter shooter, bool changePosition = true)
+    public bool PlaceOntoFirstEmptySlot(Shooter shooter, bool changePosition = true)
     {
         ShooterSlot firstEmptySlot = FindFirstEmptySlot();
         if (firstEmptySlot == null)
         {
             Debug.Log("NO EMPTY SLOTS");
-            return;
+            return false;
         }
 
         firstEmptySlot.PlaceShooter(shooter, changePosition);
+        return true;
     }
 
     public ShooterSlot FindFirstEmptySlot()

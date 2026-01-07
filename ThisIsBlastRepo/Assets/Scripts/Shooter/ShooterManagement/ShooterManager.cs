@@ -55,7 +55,10 @@ public class ShooterManager : MonoBehaviour
 
     public void OnShooterActivate(Shooter shooter)
     {
-        activeSlots.PlaceOntoFirstEmptySlot(shooter, false);
-        shooter.ChangeState(new TransitionState());
+        bool success = activeSlots.PlaceOntoFirstEmptySlot(shooter, false);
+        if (success)
+        {
+            shooter.ChangeState(new TransitionState());
+        }
     }
 }
