@@ -2,14 +2,6 @@ using System;
 using UnityEngine;
 using UnityEngine.Events;
 
-public enum BlockColor
-{
-    Red,
-    Green,
-    Blue,
-    Pink
-}
-
 public class Block : MonoBehaviour
 {
     public UnityEvent<Block> onBlockShot = new UnityEvent<Block>();

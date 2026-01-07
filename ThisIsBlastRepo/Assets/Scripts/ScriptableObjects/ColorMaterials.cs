@@ -1,5 +1,15 @@
 using UnityEngine;
 
+public enum BlockColor
+{
+    Red,
+    Green,
+    Blue,
+    Pink,
+    Yellow
+}
+
+
 [CreateAssetMenu(fileName = "BlockMaterials", menuName = "Game/BlockMaterials")]
 public class BlockMaterials : ScriptableObject
 {
@@ -7,6 +17,7 @@ public class BlockMaterials : ScriptableObject
     public Material green;
     public Material blue;
     public Material pink;
+    public Material yellow;
 
     public Material GetMaterial(BlockColor color)
     {
@@ -16,6 +27,7 @@ public class BlockMaterials : ScriptableObject
             BlockColor.Green => green,
             BlockColor.Blue => blue,
             BlockColor.Pink => pink,
+            BlockColor.Yellow => yellow,
             _ => red
         };
     }
