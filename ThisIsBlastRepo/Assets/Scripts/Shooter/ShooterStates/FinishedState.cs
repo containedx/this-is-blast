@@ -13,6 +13,7 @@ public class FinishedState : IShooterState
     public void Enter(Shooter shooter)
     {
         this.shooter = shooter;
+        shooter.transform.parent = null;
 
         // check if its closer to left or right screen edge
         Vector3 v = Camera.main.WorldToViewportPoint(shooter.transform.position);

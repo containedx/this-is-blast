@@ -828,9 +828,9 @@ MonoBehaviour:
     m_Top: 0
     m_Bottom: 0
   m_ChildAlignment: 4
-  m_Spacing: 20
-  m_ChildForceExpandWidth: 1
-  m_ChildForceExpandHeight: 1
+  m_Spacing: 50
+  m_ChildForceExpandWidth: 0
+  m_ChildForceExpandHeight: 0
   m_ChildControlWidth: 0
   m_ChildControlHeight: 0
   m_ChildScaleWidth: 0
@@ -1222,7 +1222,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameManager
   LevelInitializer: {fileID: 1666039937}
-  levelData: {fileID: 11400000, guid: ef62b72bbf52dab4aa1600a797b227c5, type: 2}
+  levelData: {fileID: 11400000, guid: c111de794eb5f824e922a19a43676219, type: 2}
   currentLevelBlocks: []
 --- !u!1 &1895904819
 GameObject:
@@ -1281,7 +1281,7 @@ MonoBehaviour:
   m_StartCorner: 0
   m_StartAxis: 0
   m_CellSize: {x: 100, y: 100}
-  m_Spacing: {x: 200, y: 50}
+  m_Spacing: {x: 50, y: 50}
   m_Constraint: 0
   m_ConstraintCount: 2
 --- !u!1001 &2632289327447091258
