@@ -12,9 +12,9 @@ public class ShooterSlot
         return slotTransform.childCount == 0;
     }
 
-    public void PlaceShooter(Shooter shooter)
+    public void PlaceShooter(Shooter shooter, bool changePosition=true)
     {
         shooter.transform.parent = slotTransform;
-        shooter.transform.localPosition = Vector3.zero;
+        if(changePosition) shooter.transform.localPosition = Vector3.zero;
     }
 }

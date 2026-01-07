@@ -1,3 +1,4 @@
+using UnityEditor;
 using UnityEngine;
 
 public class FinishedState : IShooterState
@@ -44,6 +45,7 @@ public class FinishedState : IShooterState
     private void FinishAnimate()
     {
         animate = false;
-        shooter.gameObject.SetActive(false);
+        shooter.ChangeState(new InactiveState());
+        shooter.Destroy();
     }
 }

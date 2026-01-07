@@ -10,6 +10,8 @@ public class ShooterManager : MonoBehaviour
     [SerializeField] private Transform activeShooterSlotsParent;
     [SerializeField] private Transform readyShooterSlotsParent;
 
+    private List<Shooter> shooters = new List<Shooter>();
+
     private ShooterContainer readySlots;
     private ShooterContainer activeSlots;
 
@@ -43,9 +45,17 @@ public class ShooterManager : MonoBehaviour
             Shooter shooter = Instantiate(shooterPrefab, transform);
 
             readySlots.PlaceOntoFirstEmptySlot(shooter);
+            shooter.OnActivate.AddListener(OnShooterActivate);
 
             index++;
             shooter.Setup(shooterData);
+            shooters.Add(shooter);
         }
+    }
+
+    public void OnShooterActivate(Shooter shooter)
+    {
+        activeSlots.PlaceOntoFirstEmptySlot(shooter, false);
+        shooter.ChangeState(new TransitionState());
     }
 }

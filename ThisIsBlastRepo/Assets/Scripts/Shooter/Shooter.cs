@@ -5,10 +5,13 @@ using System.Drawing;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Android;
+using UnityEngine.Events;
 using UnityEngine.UI;
 
 public class Shooter : MonoBehaviour
 {
+    public UnityEvent<Shooter> OnActivate = new UnityEvent<Shooter>();
+
     [Header("Shooter Settings")]
     public int projectilesCount = 20;
     public BlockColor blockColor = BlockColor.Red;
@@ -33,7 +36,12 @@ public class Shooter : MonoBehaviour
     {
         meshRenderer = GetComponent<MeshRenderer>();
         activateButton.onClick.AddListener(Activate);
-        SetState(new InactiveState());
+        ChangeState(new InactiveState());
+    }
+    private void OnDestroy()
+    {
+        currentState?.Exit();
+        currentState = null;
     }
 
     private void Update()
@@ -52,7 +60,7 @@ public class Shooter : MonoBehaviour
         ActivateOutline(false);
     }
 
-    public void SetState(IShooterState newState)
+    public void ChangeState(IShooterState newState)
     {
         currentState?.Exit();
         currentState = newState;
@@ -62,7 +70,7 @@ public class Shooter : MonoBehaviour
     public void Activate()
     {
         this.levelBlocks = GameManager.Instance.currentLevelBlocks;
-        SetState(new ActiveState());
+        OnActivate?.Invoke(this);
     }
 
     public void DecreaseCount()
@@ -76,5 +84,8 @@ public class Shooter : MonoBehaviour
         activeOutline.gameObject.SetActive(value);
     }
 
-    
+    public void Destroy()
+    {
+        Destroy(gameObject);
+    }
 }
