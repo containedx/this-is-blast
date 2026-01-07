@@ -53,7 +53,7 @@ public class Block : MonoBehaviour
         targetPosition.z -= cellSize;
     }
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider collision)
     {
         var projectile = collision.gameObject.GetComponent<Projectile>();
         if (projectile == null) return;
