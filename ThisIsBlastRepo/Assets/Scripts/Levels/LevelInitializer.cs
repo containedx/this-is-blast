@@ -16,13 +16,16 @@ public class LevelInitializer : MonoBehaviour
 
         List<ColumnBlocks> levelBlocks = new();
 
+        
         for (int col = 0; col < levelData.columns.Count; col++)
         {
             var column = levelData.columns[col];
             List<Block> columnBlocks = new();
 
+            int lastRow = column.blocks.Count - 1;
             for (int row = 0; row < column.blocks.Count; row++)
             {
+                int invertedRow = lastRow - row;
                 BlockColor color = column.blocks[row];
 
                 Block block = Instantiate(blockPrefab, transform);
@@ -30,7 +33,7 @@ public class LevelInitializer : MonoBehaviour
                 block.transform.localPosition = new Vector3(
                     col * cellSize,
                     0,
-                    -row * cellSize
+                    invertedRow * cellSize
                 );
 
                 block.SetColor(color);

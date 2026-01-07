@@ -7,7 +7,7 @@ public class FinishedState : IShooterState
     private bool animate = false;
 
     private Vector3 targetPos;
-    private float moveOffset = 5f;
+    private float moveOffset = 8f;
     private float speed = 3f;
 
     public void Enter(Shooter shooter)

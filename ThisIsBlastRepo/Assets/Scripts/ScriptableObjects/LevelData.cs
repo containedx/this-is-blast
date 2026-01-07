@@ -5,8 +5,11 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "Game/Level Data")]
 public class LevelData : ScriptableObject
 {
+    [Header("Shooters Data")]
     public int activeShootersCount = 2;
     public List<ShooterData> shooters;
+
+    [Header("Blocks Data")]
     public List<ColumnData> columns; 
 }
 

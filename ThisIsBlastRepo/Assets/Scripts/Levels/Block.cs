@@ -15,9 +15,9 @@ public class Block : MonoBehaviour
     [SerializeField] private BlockMaterials materials;
 
     private bool moveDown = false;
-    private bool moveScale = false;
+    //private bool moveScale = false;
     private Vector3 targetPosition;
-    private Vector3 targetScale;
+    //private Vector3 targetScale;
     private float moveSpeed = 10f;
 
     private void Awake()

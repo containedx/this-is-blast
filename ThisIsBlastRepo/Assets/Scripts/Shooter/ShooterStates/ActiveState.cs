@@ -41,14 +41,14 @@ public class ActiveState : IShooterState
     private void LerpTowardTarget()
     {
         // if shoot target is null go back to neutral
-        Vector3 direction = new Vector3(0f,0f,0f);
-        if(shootTarget != null )
+        Quaternion targetRotation = Quaternion.identity;
+        if (shootTarget != null )
         {
-            direction = shootTarget.position - shooter.transform.position;
+            var direction = shootTarget.position - shooter.transform.position;
             direction.y = 0;
+            targetRotation = Quaternion.LookRotation(direction);
         }
 
-        Quaternion targetRotation = Quaternion.LookRotation(direction);
         shooter.transform.rotation = Quaternion.Slerp(shooter.transform.rotation, targetRotation, 5f * Time.deltaTime);
     }
 

@@ -17,3 +17,5 @@ MonoBehaviour:
   blue: {fileID: 2100000, guid: 312a01a63e6169f44bcc407b84118b2b, type: 2}
   pink: {fileID: 2100000, guid: 5925e5a7d09dd6c4ab09f2a939d2a116, type: 2}
   yellow: {fileID: 2100000, guid: cdb5cc0087a8a5742be75edc09ebadda, type: 2}
+  orange: {fileID: 2100000, guid: 192af43e9b29a33459406449d4727ff0, type: 2}
+  purple: {fileID: 2100000, guid: 909742721a9ad5a43bdb912c6d974ff4, type: 2}
