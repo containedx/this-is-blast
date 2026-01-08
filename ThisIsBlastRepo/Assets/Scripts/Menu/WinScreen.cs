@@ -6,4 +6,5 @@ public class WinScreen : View
 {
     public TMP_Text levelText;
     public Button continueButton;
+    public ParticleSystem confetti;
 }
