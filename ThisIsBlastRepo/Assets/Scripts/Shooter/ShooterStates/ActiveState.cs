@@ -55,7 +55,10 @@ public class ActiveState : IShooterState
     private void FindNextTarget()
     {
         shootTarget = null;
-        foreach (var column in shooter.levelBlocks)
+
+        shooter.levelBlocks.RemoveAll(col => col.IsEmpty());
+
+        foreach (ColumnBlocks column in shooter.levelBlocks)
         {
             var target = column.TryToFindTarget(shooter.blockColor);
             if (target != null)

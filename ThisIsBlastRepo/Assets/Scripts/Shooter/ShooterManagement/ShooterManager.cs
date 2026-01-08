@@ -18,6 +18,8 @@ public class ShooterManager : MonoBehaviour
 
     public void SpawnShooters(LevelData levelData)
     {
+        CleanUp();
+
         readySlots = new ShooterContainer();
         activeSlots = new ShooterContainer();
 
@@ -71,6 +73,26 @@ public class ShooterManager : MonoBehaviour
         {
             shooter.ChangeState(new TransitionState());
             readySlots.MoveShooterBelowEmptySpace(shooter);
+        }
+    }
+
+    private void CleanUp()
+    {
+        //TODO: object pool slots
+        if (readySlots != null)
+        {
+            foreach (var slot in readySlots.slots)
+            {
+                Destroy(slot.slotTransform.gameObject);
+            }
+        }
+        
+        if( activeSlots != null)
+        {
+            foreach (var slot in activeSlots.slots)
+            {
+                Destroy(slot.slotTransform.gameObject);
+            }
         }
     }
 }

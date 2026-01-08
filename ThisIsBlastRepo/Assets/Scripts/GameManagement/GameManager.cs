@@ -6,10 +6,13 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance { get; private set; }
 
     [SerializeField] private LevelInitializer LevelInitializer;
-    [SerializeField] private LevelData levelData;
+    [SerializeField] private List<LevelData> levelData;
 
     public List<ColumnBlocks> currentLevelBlocks;
     private int currentLevelAllBlocksCount = 0;
+    private int levelIndex = -1;
+
+    public IGameState currentState { private set; get; }
 
     private void Awake()
     {
@@ -22,8 +25,34 @@ public class GameManager : MonoBehaviour
         Instance = this;
         #endregion
 
-        currentLevelBlocks = LevelInitializer.InitLevel(levelData);
+        NextLevel();
+    }
+
+    private void OnDestroy()
+    {
+        currentState?.Exit();
+        currentState = null;
+    }
+
+    private void Update()
+    {
+        currentState?.Update();
+    }
+
+    public void ChangeState(IGameState newState)
+    {
+        currentState?.Exit();
+        currentState = newState;
+        currentState.Enter(this);
+    }
+
+    public void NextLevel()
+    {
+        levelIndex++;
+        currentLevelBlocks = LevelInitializer.InitLevel(levelData[levelIndex]);
         currentLevelAllBlocksCount = GetBlocksCount();
+
+        ChangeState(new PlayingState());
     }
 
     public int GetBlocksCount()

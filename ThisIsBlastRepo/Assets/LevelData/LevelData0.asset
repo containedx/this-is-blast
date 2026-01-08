@@ -12,6 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 133254cc4add79b439645465461a1068, type: 3}
   m_Name: LevelData0
   m_EditorClassIdentifier: Assembly-CSharp::LevelData
+  activeShootersCount: 2
+  readyShootersColumnsCount: 2
   shooters:
   - projectiles: 60
     blockColor: 0
