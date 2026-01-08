@@ -52,6 +52,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::LevelProgressBarUI
   slider: {fileID: 234469466005789356}
+  levelText: {fileID: 2087895060448942998}
 --- !u!1 &2951603746314579065
 GameObject:
   m_ObjectHideFlags: 0

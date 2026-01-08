@@ -1,8 +1,10 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
+    public Action OnLevelStarted;
     public static GameManager Instance { get; private set; }
 
     [SerializeField] private LevelInitializer LevelInitializer;
@@ -47,6 +49,11 @@ public class GameManager : MonoBehaviour
         currentState.Enter(this);
     }
 
+    public int GetLevelIndex()
+    {
+        return levelIndex;
+    }
+
     public void RepeatLevel()
     {
         RunLevel();
@@ -64,6 +71,7 @@ public class GameManager : MonoBehaviour
         currentLevelAllBlocksCount = GetBlocksCount();
 
         ChangeState(new PlayingState());
+        OnLevelStarted?.Invoke();
     }
 
     public int GetBlocksCount()

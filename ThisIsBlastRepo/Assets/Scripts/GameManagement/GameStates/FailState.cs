@@ -8,6 +8,9 @@ public class FailState : IGameState
         this.game = game;
         View.Get<FailScreen>().ShowDelayed(1.5f);
         View.Get<FailScreen>().tryAgainButton.onClick.AddListener(TryAgain);
+
+        int levelNumber = GameManager.Instance.GetLevelIndex() + 1;
+        View.Get<FailScreen>().levelText.text = "Level " + levelNumber;
     }
 
     public void Exit()
