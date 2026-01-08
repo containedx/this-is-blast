@@ -11,7 +11,10 @@ public class ReadyState : IShooterState
         shooter.activateButton.onClick.AddListener(Activate);
     }
 
-    public void Exit() { }
+    public void Exit() 
+    {
+        shooter.activateButton.onClick.RemoveListener(Activate);
+    }
 
     public void Update() { }
 
