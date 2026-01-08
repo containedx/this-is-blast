@@ -1230,6 +1230,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameManager
   LevelInitializer: {fileID: 1666039937}
+  ShooterManager: {fileID: 746062237}
   levelData:
   - {fileID: 11400000, guid: b4f89005bb519b44a8df13a464ede656, type: 2}
   - {fileID: 11400000, guid: ef62b72bbf52dab4aa1600a797b227c5, type: 2}

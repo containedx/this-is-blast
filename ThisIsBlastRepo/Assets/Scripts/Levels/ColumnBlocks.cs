@@ -32,6 +32,11 @@ public class ColumnBlocks
         return blocks.Count == 0;
     }
 
+    public BlockColor GetBottomColor()
+    {
+        return blocks[blocks.Count - 1].blockColor;
+    }
+
     public Block TryToFindTarget(BlockColor color)
     {
         if (isProcessing || IsEmpty()) return null;

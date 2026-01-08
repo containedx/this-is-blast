@@ -6,6 +6,7 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance { get; private set; }
 
     [SerializeField] private LevelInitializer LevelInitializer;
+    public ShooterManager ShooterManager;
     [SerializeField] private List<LevelData> levelData;
 
     public List<ColumnBlocks> currentLevelBlocks;
@@ -46,9 +47,19 @@ public class GameManager : MonoBehaviour
         currentState.Enter(this);
     }
 
+    public void RepeatLevel()
+    {
+        RunLevel();
+    }
+
     public void NextLevel()
     {
         levelIndex++;
+        RunLevel();
+    }
+
+    private void RunLevel()
+    {
         currentLevelBlocks = LevelInitializer.InitLevel(levelData[levelIndex]);
         currentLevelAllBlocksCount = GetBlocksCount();
 

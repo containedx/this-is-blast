@@ -6,7 +6,7 @@ public class WinState : IGameState
     public void Enter(GameManager game)
     {
         this.game = game;
-        View.Get<WinScreen>().Show();
+        View.Get<WinScreen>().ShowDelayed(0.5f);
         View.Get<WinScreen>().continueButton.onClick.AddListener(Continue);
     }
 

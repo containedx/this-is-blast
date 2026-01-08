@@ -1,4 +1,7 @@
 
+
+using System.Collections.Generic;
+
 public class PlayingState : IGameState
 {
     GameManager game;
@@ -17,10 +20,45 @@ public class PlayingState : IGameState
     {
         if(game != null)
         {
-            if(game.GetBlocksCount() == 0)
+            CheckIfWin();
+            CheckIfFail();
+        }
+    }
+
+    private void CheckIfWin()
+    {
+        if (game.GetBlocksCount() == 0)
+        {
+            game.ChangeState(new WinState());
+        }
+    }
+
+    private void CheckIfFail()
+    {
+        // if there is empty active slot, then no worries
+        if (game.ShooterManager.CheckIfAnyEmptyActiveSlots()) return;
+
+        List<BlockColor> bottomBlocksColor = new List<BlockColor>();
+        foreach(var column in game.currentLevelBlocks)
+        {
+            if(!column.IsEmpty())
             {
-                game.ChangeState(new WinState());
+                BlockColor color = column.GetBottomColor();
+
+                if (!bottomBlocksColor.Contains(color))
+                {
+                    bottomBlocksColor.Add(color);
+                }
             }
         }
+
+        List<BlockColor> shootersColor = game.ShooterManager.GetActiveShootersColor();
+
+        foreach(var shooterColor in shootersColor)
+        {
+            if (bottomBlocksColor.Contains(shooterColor)) return;
+        }
+
+        game.ChangeState(new FailState());
     }
 }

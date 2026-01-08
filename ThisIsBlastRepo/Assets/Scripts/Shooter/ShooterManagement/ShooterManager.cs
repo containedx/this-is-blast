@@ -76,6 +76,33 @@ public class ShooterManager : MonoBehaviour
         }
     }
 
+    public bool CheckIfAnyEmptyActiveSlots()
+    {
+        foreach(var slot in activeSlots.slots)
+        {
+            if (slot.IsEmpty()) return true;
+        }
+        return false;
+    }
+
+    public List<BlockColor> GetActiveShootersColor()
+    {
+        List<BlockColor> colors = new List<BlockColor>();
+
+        foreach (var slot in activeSlots.slots)
+        {
+            if (slot.IsEmpty()) continue;
+            BlockColor color = slot.shooter.blockColor;
+
+            if (!colors.Contains(color))
+            {
+                colors.Add(color);
+            }
+        }
+
+        return colors;
+    }
+
     private void CleanUp()
     {
         //TODO: object pool slots
