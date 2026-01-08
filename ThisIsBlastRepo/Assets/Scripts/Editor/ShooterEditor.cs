@@ -22,9 +22,7 @@ public class ShooterEditor : Editor
 
         if (GUILayout.Button("🔥 ACTIVATE SHOOTER"))
         {
-            shooter.Activate();
+            shooter.ChangeState(new ActiveState());
         }
-
-        
     }
 }

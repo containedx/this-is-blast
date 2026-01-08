@@ -253,7 +253,7 @@ GameObject:
   - component: {fileID: 1963446628583589900}
   - component: {fileID: 4121236303953647820}
   m_Layer: 0
-  m_Name: ActiveOutline
+  m_Name: ReadyOutline
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -554,11 +554,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0803645b52df6a74f84808ec4ab2dc55, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Shooter
+  OnActivate:
+    m_PersistentCalls:
+      m_Calls: []
   projectilesCount: 20
   blockColor: 0
   cooldownTime: 0.1
   projectilePrefab: {fileID: 3118363972341836695, guid: ccd4a8b2b2fb7664f8f2576674963346, type: 3}
-  countText: {fileID: 7286759085249965571}
   activateButton: {fileID: 1966305135775647325}
+  countText: {fileID: 7286759085249965571}
+  activeTextColor: {r: 1, g: 1, b: 1, a: 1}
+  inactiveTextColor: {r: 1, g: 1, b: 1, a: 0.23921569}
   materials: {fileID: 11400000, guid: b93c648de45667e4fac25a5f253307b5, type: 2}
-  activeOutline: {fileID: 1963446628583589900}
+  readyOutline: {fileID: 1963446628583589900}

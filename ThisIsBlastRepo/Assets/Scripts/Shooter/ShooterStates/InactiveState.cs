@@ -2,7 +2,7 @@ public class InactiveState : IShooterState
 {
     public void Enter(Shooter shooter)
     {
-        // do nothing
+        shooter.ActivateInactiveUI();
     }
 
     public void Exit() { }

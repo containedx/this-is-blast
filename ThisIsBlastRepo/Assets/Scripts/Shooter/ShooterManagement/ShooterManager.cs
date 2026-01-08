@@ -57,6 +57,11 @@ public class ShooterManager : MonoBehaviour
             shooter.Setup(shooterData);
             shooters.Add(shooter);
         }
+
+        for (int i = 0; i < readySlots.columnCount; i++)
+        {
+            readySlots.slots[i].shooter.ChangeState(new ReadyState());
+        }
     }
 
     public void OnShooterActivate(Shooter shooter)

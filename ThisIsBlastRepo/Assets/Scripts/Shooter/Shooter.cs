@@ -1,7 +1,6 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Drawing;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Android;
@@ -21,10 +20,12 @@ public class Shooter : MonoBehaviour
     [SerializeField] private Projectile projectilePrefab;
 
     [Header("UI")]
+    public Button activateButton;
     [SerializeField] private TMP_Text countText;
-    [SerializeField] private Button activateButton;
+    [SerializeField] private Color activeTextColor;
+    [SerializeField] private Color inactiveTextColor;
     [SerializeField] private BlockMaterials materials;
-    [SerializeField] private Image activeOutline;
+    [SerializeField] private Image readyOutline;
     private MeshRenderer meshRenderer;
 
     [NonSerialized]
@@ -35,7 +36,6 @@ public class Shooter : MonoBehaviour
     private void Awake()
     {
         meshRenderer = GetComponent<MeshRenderer>();
-        activateButton.onClick.AddListener(Activate);
         ChangeState(new InactiveState());
     }
     private void OnDestroy()
@@ -54,10 +54,9 @@ public class Shooter : MonoBehaviour
         blockColor = shooterData.blockColor;
         projectilesCount = shooterData.projectiles;
 
-        activeOutline.color = materials.GetMaterial(blockColor).color;
+        readyOutline.color = materials.GetMaterial(blockColor).color;
         meshRenderer.material = materials.GetMaterial(blockColor);
         countText.text = projectilesCount.ToString();
-        ActivateOutline(false);
     }
 
     public void ChangeState(IShooterState newState)
@@ -67,21 +66,33 @@ public class Shooter : MonoBehaviour
         currentState.Enter(this);
     }
 
-    public void Activate()
-    {
-        this.levelBlocks = GameManager.Instance.currentLevelBlocks;
-        OnActivate?.Invoke(this);
-    }
-
     public void DecreaseCount()
     {
         projectilesCount -= 1;
         countText.text = projectilesCount.ToString();
     }
 
-    public void ActivateOutline(bool value)
+
+    public void ActivateReadyUI()
     {
-        activeOutline.gameObject.SetActive(value);
+        ActivateOutline(true);
+        countText.color = activeTextColor;
+    }
+
+    public void ActivateInactiveUI()
+    {
+        ActivateOutline(false);
+        countText.color = inactiveTextColor;
+    }
+    public void ActivateActiveUI()
+    {
+        ActivateOutline(false);
+        countText.color = activeTextColor;
+    }
+
+    private void ActivateOutline(bool value)
+    {
+        readyOutline.gameObject.SetActive(value);
     }
 
     public void Destroy()

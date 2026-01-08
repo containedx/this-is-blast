@@ -44,15 +44,24 @@ public class ShooterContainer
     {
         int emptySlotIndex = slots.IndexOf(FindSlot(shooter));
         int slotBelowIndex = emptySlotIndex + columnCount;
-        //move the whole column up
-        while(slotBelowIndex < slots.Count )
+
+        // get first next shooter into Ready State
+        if (slotBelowIndex < slots.Count)
         {
-            Debug.Log("trying to move " + slotBelowIndex + " to" + emptySlotIndex);
+            if (!slots[slotBelowIndex].IsEmpty())
+            {
+                slots[slotBelowIndex].shooter.ChangeState(new ReadyState());
+            }
+        }
+
+        //move the whole column up
+        while ( slotBelowIndex < slots.Count )
+        {
             if (slots[slotBelowIndex].IsEmpty()) return;
 
             ShooterSlot emptySlot = slots[emptySlotIndex];
             emptySlot.PlaceShooter(slots[slotBelowIndex].shooter);
-            Debug.Log("SUCCESS " + slotBelowIndex + " to" + emptySlotIndex);
+
             emptySlotIndex = slotBelowIndex;
             slotBelowIndex = emptySlotIndex + columnCount;
         }

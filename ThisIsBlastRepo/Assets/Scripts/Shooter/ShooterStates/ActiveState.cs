@@ -13,13 +13,13 @@ public class ActiveState : IShooterState
     public void Enter(Shooter shooter)
     {
         this.shooter = shooter;
-        shooter.ActivateOutline(true);
+        shooter.ActivateActiveUI();
         shootTimer = shooter.cooldownTime;
     }
 
     public void Exit()
     {
-        shooter.ActivateOutline(false);
+
     }
 
     public void Update()
