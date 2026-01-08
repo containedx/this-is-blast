@@ -2,6 +2,7 @@ using UnityEngine;
 public class ShooterSlot
 {
     public Transform slotTransform;
+    public Shooter shooter;
 
     public ShooterSlot(Transform slotTransform)
     {
@@ -14,6 +15,7 @@ public class ShooterSlot
 
     public void PlaceShooter(Shooter shooter, bool changePosition=true)
     {
+        this.shooter = shooter;
         shooter.transform.parent = slotTransform;
         if(changePosition) shooter.transform.localPosition = Vector3.zero;
     }

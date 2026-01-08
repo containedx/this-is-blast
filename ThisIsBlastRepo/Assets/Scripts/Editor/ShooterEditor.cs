@@ -6,9 +6,17 @@ public class ShooterEditor : Editor
 {
     public override void OnInspectorGUI()
     {
+        Shooter shooter = (Shooter)target;
+
+        if(shooter.currentState != null)
+        {
+            GUILayout.TextArea("STATE: " + shooter.currentState.ToString());
+        }
+        
+
         DrawDefaultInspector();
 
-        Shooter shooter = (Shooter)target;
+        
 
         GUILayout.Space(10);
 
@@ -16,5 +24,7 @@ public class ShooterEditor : Editor
         {
             shooter.Activate();
         }
+
+        
     }
 }

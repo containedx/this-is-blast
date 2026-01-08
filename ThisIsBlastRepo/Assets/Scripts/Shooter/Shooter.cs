@@ -30,7 +30,7 @@ public class Shooter : MonoBehaviour
     [NonSerialized]
     public List<ColumnBlocks> levelBlocks;
 
-    private IShooterState currentState;
+    public IShooterState currentState { private set; get; }
 
     private void Awake()
     {

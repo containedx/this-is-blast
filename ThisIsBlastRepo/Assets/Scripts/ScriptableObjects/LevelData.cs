@@ -6,7 +6,8 @@ using UnityEngine;
 public class LevelData : ScriptableObject
 {
     [Header("Shooters Data")]
-    public int activeShootersCount = 2;
+    public int activeShootersCount = 5;
+    public int readyShootersColumnsCount = 3;
     public List<ShooterData> shooters;
 
     [Header("Blocks Data")]

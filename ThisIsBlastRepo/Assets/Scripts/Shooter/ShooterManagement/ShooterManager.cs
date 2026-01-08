@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ShooterManager : MonoBehaviour
 {
@@ -20,6 +21,7 @@ public class ShooterManager : MonoBehaviour
         readySlots = new ShooterContainer();
         activeSlots = new ShooterContainer();
 
+        activeSlots.columnCount = levelData.activeShootersCount;
         for (int i = 0; i < levelData.activeShootersCount; i++)
         {
             Transform activeSlot = Instantiate(
@@ -30,6 +32,10 @@ public class ShooterManager : MonoBehaviour
             activeSlots.slots.Add(new ShooterSlot(activeSlot));
         }
 
+        readySlots.columnCount = levelData.readyShootersColumnsCount;
+        var grid = readyShooterSlotsParent.GetComponent<GridLayoutGroup>();
+        grid.constraintCount = readySlots.columnCount;
+        
         for (int i = 0; i < levelData.shooters.Count; i++)
         {
             Transform readySlot = Instantiate(
@@ -59,6 +65,7 @@ public class ShooterManager : MonoBehaviour
         if (success)
         {
             shooter.ChangeState(new TransitionState());
+            readySlots.MoveShooterBelowEmptySpace(shooter);
         }
     }
 }

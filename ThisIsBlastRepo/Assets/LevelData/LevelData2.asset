@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: LevelData2
   m_EditorClassIdentifier: Assembly-CSharp::LevelData
   activeShootersCount: 1
+  readyShootersColumnsCount: 3
   shooters:
   - projectiles: 20
     blockColor: 2
