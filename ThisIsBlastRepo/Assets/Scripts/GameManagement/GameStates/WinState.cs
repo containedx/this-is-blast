@@ -10,12 +10,15 @@ public class WinState : IGameState
     private float min = 0f;
     private float target = 0f;
     private float max = 100f;
-    float speed = 5f;
+    private float speed = 5f;
+
+    private float delay = 0.5f;
+    private float sliderDelay = 1f;
 
     public void Enter(GameManager game)
     {
         this.game = game;
-        View.Get<WinScreen>().ShowDelayed(0.5f);
+        View.Get<WinScreen>().ShowDelayed(delay);
         View.Get<WinScreen>().confetti.Play();
         View.Get<WinScreen>().continueButton.onClick.AddListener(Continue);
         
@@ -39,8 +42,12 @@ public class WinState : IGameState
         View.Get<WinScreen>().Hide();
     }
 
+    private float timer = 0f;
     public void Update()
     {
+        timer += Time.deltaTime;
+        if (timer < sliderDelay) return;
+
         if(slider != null)
         {
             slider.value = Mathf.Lerp(slider.value, target, Time.deltaTime * speed);
