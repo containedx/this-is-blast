@@ -1,9 +1,11 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public enum PoolObjectType
 {
-    Projectile
+    Projectile,
+    ShotParticle
 }
 
 public class ObjectPooler : MonoBehaviour
@@ -47,7 +49,7 @@ public class ObjectPooler : MonoBehaviour
         }
     }
 
-    public GameObject SpawnFromPool(PoolObjectType type, Vector3 position, Quaternion rotation=default)
+    public GameObject SpawnFromPool(PoolObjectType type, Vector3 position, Quaternion rotation=default, float lifetime=0f)
     {
         if (!poolDictionary.TryGetValue(type, out var queue))
         {
@@ -58,6 +60,12 @@ public class ObjectPooler : MonoBehaviour
         var obj = queue.Count > 0 ? queue.Dequeue() : Instantiate(GetPoolPrefab(type), transform);
         obj.transform.SetPositionAndRotation(position, rotation);
         obj.SetActive(true);
+
+        if(lifetime > 0f)
+        {
+            StartCoroutine(ReturnToPoolCoroutine(type, obj, lifetime));
+        }
+
         return obj;
     }
 
@@ -75,6 +83,12 @@ public class ObjectPooler : MonoBehaviour
             poolDictionary[type].Enqueue(obj);
         else
             Destroy(obj);
+    }
+
+    private IEnumerator ReturnToPoolCoroutine(PoolObjectType type, GameObject obj, float lifetime)
+    {
+        yield return new WaitForSeconds(lifetime);
+        ReturnToPool(type, obj);
     }
 
     private GameObject GetPoolPrefab(PoolObjectType type)

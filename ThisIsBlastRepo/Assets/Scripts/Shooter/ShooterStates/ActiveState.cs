@@ -76,8 +76,10 @@ public class ActiveState : IShooterState
 
         shooter.DecreaseCount();
 
-        var projectile = ObjectPooler.Instance.SpawnFromPool(PoolObjectType.Projectile, shooter.transform.position, Quaternion.identity);
+        var projectile = ObjectPooler.Instance.SpawnFromPool(PoolObjectType.Projectile, shooter.projectileSpawnPoint.transform.position, Quaternion.identity);
         projectile.GetComponent<Projectile>().Shoot(target);
+
+        shooter.shotEffect.Play();
     }
 
     private void ShooterFinished()

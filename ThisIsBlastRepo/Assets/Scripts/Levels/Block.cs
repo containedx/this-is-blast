@@ -5,7 +5,6 @@ using UnityEngine.Events;
 public class Block : MonoBehaviour
 {
     public UnityEvent<Block> onBlockShot = new UnityEvent<Block>();
-    public UnityEvent onMoveDownFinished = new UnityEvent();
 
     public BlockColor blockColor = BlockColor.Red;
     [SerializeField] private float cellSize = 0.6f;
@@ -27,26 +26,24 @@ public class Block : MonoBehaviour
 
     private void Start()
     {
-        targetPosition = transform.position;
+        targetPosition = transform.localPosition;
     }
 
     private void OnDestroy()
     {
         onBlockShot.RemoveAllListeners();
-        onMoveDownFinished.RemoveAllListeners();
     }
 
     private void Update()
     {
         if(moveDown)
         {
-            transform.position = Vector3.Lerp(transform.position, targetPosition, moveSpeed * Time.deltaTime);
+            transform.localPosition = Vector3.Lerp(transform.localPosition, targetPosition, moveSpeed * Time.deltaTime);
 
             if (Vector3.Distance(transform.position, targetPosition) < 0.05f)
             {
-                transform.position = targetPosition;
+                transform.localPosition = targetPosition;
                 moveDown = false;
-                onMoveDownFinished?.Invoke();
             }
         }
     }
@@ -77,7 +74,7 @@ public class Block : MonoBehaviour
         }
 
         alreadyShot = true;
-        ObjectPooler.Instance.ReturnToPool(PoolObjectType.Projectile, projectile);
+        ObjectPooler.Instance.SpawnFromPool(PoolObjectType.ShotParticle, transform.position, Quaternion.identity, 0.5f);
         onBlockShot?.Invoke(this);
         BeginRemoveBlock();
     }

@@ -19,6 +19,8 @@ public class Projectile : MonoBehaviour
 
     private void Update()
     {
+        if (target == null) return;
+
         // make sure block is always shot
         timer += Time.deltaTime;
         if (timer > maximumLifespan)

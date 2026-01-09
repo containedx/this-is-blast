@@ -17,7 +17,8 @@ public class Shooter : MonoBehaviour
     public float cooldownTime = 0.1f;
 
     [Header("Projectile")]
-    [SerializeField] private Projectile projectilePrefab;
+    public Transform projectileSpawnPoint;
+    public ParticleSystem shotEffect;
 
     [Header("UI")]
     public Button activateButton;
