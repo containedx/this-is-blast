@@ -1448,6 +1448,22 @@ PrefabInstance:
       propertyPath: m_Name
       value: WinScreen
       objectReference: {fileID: 0}
+    - target: {fileID: 4011671499264275923, guid: ec0298a8f7bdd5546bad08e60e86543e, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4011671499264275923, guid: ec0298a8f7bdd5546bad08e60e86543e, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4011671499264275923, guid: ec0298a8f7bdd5546bad08e60e86543e, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4011671499264275923, guid: ec0298a8f7bdd5546bad08e60e86543e, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4391344812035547245, guid: ec0298a8f7bdd5546bad08e60e86543e, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -1526,6 +1542,22 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4391344812035547245, guid: ec0298a8f7bdd5546bad08e60e86543e, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5857017033633556580, guid: ec0298a8f7bdd5546bad08e60e86543e, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5857017033633556580, guid: ec0298a8f7bdd5546bad08e60e86543e, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5857017033633556580, guid: ec0298a8f7bdd5546bad08e60e86543e, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5857017033633556580, guid: ec0298a8f7bdd5546bad08e60e86543e, type: 3}
+      propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -1541,6 +1573,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 238701861}
     m_Modifications:
+    - target: {fileID: 1404632257972491139, guid: 210013816806dbe4798de3d3778c9d5b, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4191271737526871483, guid: 210013816806dbe4798de3d3778c9d5b, type: 3}
       propertyPath: m_Name
       value: LoadingScreen
@@ -1548,6 +1584,14 @@ PrefabInstance:
     - target: {fileID: 4191271737526871483, guid: 210013816806dbe4798de3d3778c9d5b, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4775297223467034942, guid: 210013816806dbe4798de3d3778c9d5b, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4775297223467034942, guid: 210013816806dbe4798de3d3778c9d5b, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5479163228086782463, guid: 210013816806dbe4798de3d3778c9d5b, type: 3}
       propertyPath: m_Pivot.x
@@ -1628,6 +1672,10 @@ PrefabInstance:
     - target: {fileID: 5479163228086782463, guid: 210013816806dbe4798de3d3778c9d5b, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8761478827755887361, guid: 210013816806dbe4798de3d3778c9d5b, type: 3}
+      propertyPath: m_Value
+      value: 100
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

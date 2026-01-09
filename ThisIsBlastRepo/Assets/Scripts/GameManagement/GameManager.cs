@@ -67,10 +67,10 @@ public class GameManager : MonoBehaviour
 
     private void RunLevel()
     {
+        ChangeState(new LoadingState());
         currentLevelBlocks = LevelInitializer.InitLevel(levelData[levelIndex]);
         currentLevelAllBlocksCount = GetBlocksCount();
 
-        ChangeState(new PlayingState());
         OnLevelStarted?.Invoke();
     }
 
