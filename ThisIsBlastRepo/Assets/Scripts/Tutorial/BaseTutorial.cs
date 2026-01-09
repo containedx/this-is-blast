@@ -17,12 +17,12 @@ public class BaseTutorial : MonoBehaviour
         gameObject.SetActive(false);
     }
 
-    private void OnEnable()
+    protected virtual void OnEnable()
     {
         GameManager.Instance.ShooterManager.OnShooterActivated += Close;
     }
 
-    private void OnDisable()
+    protected virtual void OnDisable()
     {
         if(GameManager.Instance)
         {
@@ -30,7 +30,7 @@ public class BaseTutorial : MonoBehaviour
         }
     }
 
-    private void Close()
+    protected void Close()
     {
         Hide();
     }

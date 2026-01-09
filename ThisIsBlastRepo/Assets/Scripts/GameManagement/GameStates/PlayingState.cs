@@ -38,6 +38,9 @@ public class PlayingState : IGameState
         // if there is empty active slot, then no worries
         if (game.ShooterManager.CheckIfAnyEmptyActiveSlots()) return;
 
+        //if is merging, wait
+        if (game.ShooterManager.IsMerging()) return;
+
         List<BlockColor> bottomBlocksColor = new List<BlockColor>();
         foreach(var column in game.currentLevelBlocks)
         {

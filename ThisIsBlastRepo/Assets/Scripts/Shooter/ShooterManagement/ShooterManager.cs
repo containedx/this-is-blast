@@ -1,11 +1,15 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
+using System.Runtime.CompilerServices;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class ShooterManager : MonoBehaviour
 {
     public Action OnShooterActivated;
+    public Action OnMergeFinished;
 
     [SerializeField] private Shooter shooterPrefab;
     [SerializeField] private Transform activeShooterSlotPrefab;
@@ -18,6 +22,11 @@ public class ShooterManager : MonoBehaviour
 
     private ShooterContainer readySlots;
     private ShooterContainer activeSlots;
+
+    private void Update()
+    {
+        MergePossibleSlots();
+    }
 
     public void SpawnShooters(LevelData levelData)
     {
@@ -106,6 +115,11 @@ public class ShooterManager : MonoBehaviour
         return false;
     }
 
+    public bool IsMerging()
+    {
+        return isMerging;
+    }
+
     public List<BlockColor> GetActiveShootersColor()
     {
         List<BlockColor> colors = new List<BlockColor>();
@@ -124,9 +138,69 @@ public class ShooterManager : MonoBehaviour
         return colors;
     }
 
+    private int mergeNumber = 3;
+    private bool isMerging = false;
+    private void MergePossibleSlots()
+    {
+        if (activeSlots == null || IsMerging()) return;
+        if (activeSlots.slots.Count < mergeNumber) return;
+
+        Dictionary<BlockColor, int> counts = new();
+
+        foreach (var slot in activeSlots.slots)
+        {
+            if (slot.IsEmpty() || slot.shooter == null)
+                continue;
+
+            var color = slot.shooter.blockColor;
+
+            if (!counts.ContainsKey(color))
+                counts[color] = 0;
+
+            counts[color]++;
+
+            if (counts[color] >= mergeNumber)
+            {
+                StartCoroutine(StartMerge(color));
+                return;
+            }
+        }
+    }
+
+    private IEnumerator StartMerge(BlockColor color)
+    {
+        isMerging = true;
+        yield return new WaitForSeconds(0.8f);
+        Merge(color);
+    }
+
+    private void Merge(BlockColor color)
+    {
+        isMerging = true;
+        List<Shooter> shootersToMerge = activeSlots.slots
+            .Where(s => !s.IsEmpty() && s.shooter != null && s.shooter.blockColor == color)
+            .Take(mergeNumber)
+            .Select(s => s.shooter)
+            .ToList();
+
+        Shooter left = shootersToMerge[0];
+        Shooter middle = shootersToMerge[1];
+        Shooter right = shootersToMerge[2];
+
+        left.ChangeState(new MergeState(middle.transform.position));
+        middle.ChangeState(new MergeState(left, right, OnMergeFinish));
+        right.ChangeState(new MergeState(middle.transform.position));
+    }
+
+    public void OnMergeFinish()
+    {
+        isMerging = false;
+        OnMergeFinished?.Invoke();
+    }
+
     private void CleanUp()
     {
-        //TODO: object pool slots
+        //TODO: could object pool slots
         if (readySlots != null)
         {
             foreach (var slot in readySlots.slots)

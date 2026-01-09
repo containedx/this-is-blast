@@ -58,7 +58,7 @@ public class Shooter : MonoBehaviour
 
         readyOutline.color = materials.GetMaterial(blockColor).color;
         meshRenderer.material = materials.GetMaterial(blockColor);
-        countText.text = projectilesCount.ToString();
+        UpdateProjectilesCountText();
     }
 
     public void ChangeState(IShooterState newState)
@@ -68,10 +68,15 @@ public class Shooter : MonoBehaviour
         currentState.Enter(this);
     }
 
+    public void UpdateProjectilesCountText()
+    {
+        countText.text = projectilesCount.ToString();
+    }
+
     public void DecreaseCount()
     {
         projectilesCount -= 1;
-        countText.text = projectilesCount.ToString();
+        UpdateProjectilesCountText();
     }
 
 
