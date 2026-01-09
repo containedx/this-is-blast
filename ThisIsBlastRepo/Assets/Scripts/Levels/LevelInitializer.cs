@@ -14,8 +14,9 @@ public class LevelInitializer : MonoBehaviour
     {
         shooterManager.SpawnShooters(levelData);
 
-        List<ColumnBlocks> levelBlocks = new();
+        Clear();
 
+        List<ColumnBlocks> levelBlocks = new();
         
         for (int col = 0; col < levelData.columns.Count; col++)
         {
@@ -46,5 +47,11 @@ public class LevelInitializer : MonoBehaviour
         }
 
         return levelBlocks;
+    }
+
+    private void Clear()
+    {
+        foreach (Transform child in transform)
+            Destroy(child.gameObject);
     }
 }

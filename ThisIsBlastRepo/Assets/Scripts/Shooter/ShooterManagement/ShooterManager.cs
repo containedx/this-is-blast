@@ -1,9 +1,12 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class ShooterManager : MonoBehaviour
 {
+    public Action OnShooterActivated;
+
     [SerializeField] private Shooter shooterPrefab;
     [SerializeField] private Transform activeShooterSlotPrefab;
     [SerializeField] private Transform readyShooterSlotPrefab;
@@ -77,7 +80,7 @@ public class ShooterManager : MonoBehaviour
             {
                 readySlots.slots[index].shooter.ChangeState(new HiddenState());
                 
-                if(random) index = Random.Range(columns, readySlots.slots.Count);
+                if(random) index = UnityEngine.Random.Range(columns, readySlots.slots.Count);
                 else index++;
             }
         }
@@ -90,6 +93,7 @@ public class ShooterManager : MonoBehaviour
         {
             shooter.ChangeState(new TransitionState());
             readySlots.MoveShooterBelowEmptySpace(shooter);
+            OnShooterActivated?.Invoke();
         }
     }
 
