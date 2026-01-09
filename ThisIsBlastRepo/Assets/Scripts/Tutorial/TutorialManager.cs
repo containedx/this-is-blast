@@ -6,10 +6,47 @@ public class TutorialManager : MonoBehaviour
 {
     [SerializeField] private List<Tutorial> tutorials = new List<Tutorial>();
 
+    private int previousFeatureIndex = 0;
+
+    #region Instance
+    public static TutorialManager Instance { get; private set; }
+    private void Awake()
+    {
+        
+        if (Instance != null && Instance != this)
+        {
+            Destroy(gameObject);
+            return;
+        }
+        Instance = this;
+        
+    }
+    #endregion
+
+
     private void Start()
     {
         tutorials[0].tutorialView.Show();
         GameManager.Instance.OnLevelStarted += CheckTutorials;
+    }
+
+    public int GetPreviousFeatureIndex()
+    {
+        return previousFeatureIndex;
+    }
+
+    public int GetNextFeatureIndex()
+    {
+        if (tutorials.Count == 0) return 30;
+
+        var next = tutorials[0].level;
+        if (GameManager.Instance.GetLevelIndex() == next)
+        {
+            if (tutorials.Count == 0) return 30;
+            next = tutorials[1].level;
+        }
+
+        return next;
     }
 
     private void CheckTutorials()
@@ -22,6 +59,7 @@ public class TutorialManager : MonoBehaviour
         {
             if(tutorial.level == currentLevel)
             {
+                previousFeatureIndex = currentLevel;
                 tutorial.tutorialView.Show();
             }
         }

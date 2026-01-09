@@ -7,4 +7,6 @@ public class WinScreen : View
     public TMP_Text levelText;
     public Button continueButton;
     public ParticleSystem confetti;
+    public Slider newFeatureSlider;
+    public TMP_Text newFeatureText;
 }

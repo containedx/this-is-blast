@@ -1303,7 +1303,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: fece73564199a494e992a217f19dff38, type: 2}
   - {fileID: 11400000, guid: 89cea5d64cc33ac42a6f9030fcf44967, type: 2}
   currentLevelBlocks: []
-  levelIndex: 5
+  levelIndex: -1
 --- !u!1 &1895904819
 GameObject:
   m_ObjectHideFlags: 0
@@ -1515,6 +1515,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 238701861}
     m_Modifications:
+    - target: {fileID: 605372918161099457, guid: ec0298a8f7bdd5546bad08e60e86543e, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 605372918161099457, guid: ec0298a8f7bdd5546bad08e60e86543e, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 775353979865731672, guid: ec0298a8f7bdd5546bad08e60e86543e, type: 3}
       propertyPath: m_LocalPosition.x
       value: -134.2
@@ -1629,6 +1637,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4391344812035547245, guid: ec0298a8f7bdd5546bad08e60e86543e, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4523515727189060492, guid: ec0298a8f7bdd5546bad08e60e86543e, type: 3}
+      propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5857017033633556580, guid: ec0298a8f7bdd5546bad08e60e86543e, type: 3}
