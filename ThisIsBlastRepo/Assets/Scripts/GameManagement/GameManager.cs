@@ -67,6 +67,12 @@ public class GameManager : MonoBehaviour
 
     private void RunLevel()
     {
+        if(levelIndex >= levelData.Count)
+        {
+            Debug.Log("NO MORE LEVELS");
+            return;
+        }
+
         ChangeState(new LoadingState());
         currentLevelBlocks = LevelInitializer.InitLevel(levelData[levelIndex]);
         currentLevelAllBlocksCount = GetBlocksCount();
