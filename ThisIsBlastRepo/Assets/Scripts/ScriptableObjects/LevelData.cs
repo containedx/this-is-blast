@@ -12,6 +12,7 @@ public class LevelData : ScriptableObject
     public List<ShooterData> shooters;
 
     [Header("Blocks Data")]
+    public bool doubleDeck = false;
     public List<ColumnData> columns; 
 }
 

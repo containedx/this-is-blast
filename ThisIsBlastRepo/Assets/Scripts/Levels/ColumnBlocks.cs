@@ -49,8 +49,12 @@ public class ColumnBlocks
 
     private void OnBlockShot(Block block)
     {
-        blocks.Remove(block);
-        MoveColumnDown();
+        if (!block.IsDoubleDeck())
+        {
+            blocks.Remove(block);
+            MoveColumnDown();
+        }
+        
         FinishProcessing();
     }
 

@@ -33,13 +33,19 @@ public class LevelInitializer : MonoBehaviour
 
                 block.transform.localPosition = new Vector3(
                     col * cellSize,
-                    0,
+                    0f,
                     invertedRow * cellSize
                 );
 
                 block.SetColor(color);
                 block.gameObject.name = "block" + row;
                 block.rowIndex = invertedRow;
+
+                if(levelData.doubleDeck)
+                {
+                    block.InitDoubleDeck();
+                }
+
                 columnBlocks.Add(block);
             }
 

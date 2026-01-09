@@ -70,13 +70,11 @@ MonoBehaviour:
   onBlockShot:
     m_PersistentCalls:
       m_Calls: []
-  onMoveDownFinished:
-    m_PersistentCalls:
-      m_Calls: []
   blockColor: 0
-  cellSize: 0.65
+  cellSize: 0.6
   meshRenderer: {fileID: 6914504559527748398}
   materials: {fileID: 11400000, guid: b93c648de45667e4fac25a5f253307b5, type: 2}
+  rowIndex: 0
 --- !u!1001 &5203017540789010346
 PrefabInstance:
   m_ObjectHideFlags: 0

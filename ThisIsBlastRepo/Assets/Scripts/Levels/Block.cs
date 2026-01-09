@@ -21,6 +21,9 @@ public class Block : MonoBehaviour
 
     public int rowIndex = 0;
 
+    private bool doubleDeck = false;
+    private GameObject secondDeck;
+
     private void Awake()
     {
         alreadyShot = false;
@@ -50,6 +53,24 @@ public class Block : MonoBehaviour
         }
     }
 
+    public void InitDoubleDeck()
+    {
+        doubleDeck = true;
+        secondDeck = Instantiate(this.gameObject, transform);
+        secondDeck.transform.localPosition = new Vector3(
+            0,
+            cellSize * 1.5f,
+            0
+        );
+
+        secondDeck.transform.localScale = new Vector3(1f,1f,1f);
+    }
+
+    public bool IsDoubleDeck()
+    {
+        return doubleDeck;
+    }
+
     public void MoveDown()
     {
         moveDown = true;
@@ -73,6 +94,14 @@ public class Block : MonoBehaviour
     {
         if (alreadyShot)
         {
+            return;
+        }
+
+        if(doubleDeck)
+        {
+            Destroy(secondDeck);
+            onBlockShot?.Invoke(this);
+            doubleDeck = false;
             return;
         }
 
