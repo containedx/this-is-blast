@@ -183,6 +183,13 @@ public class ShooterManager : MonoBehaviour
             .Select(s => s.shooter)
             .ToList();
 
+        // shooters might finish in meantime
+        if(shootersToMerge.Count != 3)
+        {
+            isMerging=false;
+            return;
+        }
+
         Shooter left = shootersToMerge[0];
         Shooter middle = shootersToMerge[1];
         Shooter right = shootersToMerge[2];
