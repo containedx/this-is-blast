@@ -8,12 +8,14 @@ public class ReadyState : IShooterState
     {
         this.shooter = shooter;
         shooter.ActivateReadyUI();
+        shooter.activateButton.interactable = true;
         shooter.activateButton.onClick.AddListener(Activate);
     }
 
     public void Exit() 
     {
         shooter.activateButton.onClick.RemoveListener(Activate);
+        shooter.activateButton.interactable = false;
     }
 
     public void Update() { }

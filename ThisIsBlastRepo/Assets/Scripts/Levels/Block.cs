@@ -8,10 +8,10 @@ public class Block : MonoBehaviour
     public UnityEvent onMoveDownFinished = new UnityEvent();
 
     public BlockColor blockColor = BlockColor.Red;
-    [SerializeField] private float cellSize = 0.65f;
+    [SerializeField] private float cellSize = 0.6f;
 
     [Header("Block Color Materials")]
-    private MeshRenderer meshRenderer;
+    [SerializeField] private MeshRenderer meshRenderer;
     [SerializeField] private BlockMaterials materials;
 
     private bool moveDown = false;
@@ -22,7 +22,6 @@ public class Block : MonoBehaviour
 
     private void Awake()
     {
-        meshRenderer = GetComponent<MeshRenderer>();
         alreadyShot = false;
     }
 

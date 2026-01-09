@@ -26,7 +26,7 @@ public class Shooter : MonoBehaviour
     [SerializeField] private Color inactiveTextColor;
     [SerializeField] private BlockMaterials materials;
     [SerializeField] private Image readyOutline;
-    private MeshRenderer meshRenderer;
+    [SerializeField] private MeshRenderer meshRenderer;
 
     [NonSerialized]
     public List<ColumnBlocks> levelBlocks;
@@ -35,7 +35,6 @@ public class Shooter : MonoBehaviour
 
     private void Awake()
     {
-        meshRenderer = GetComponent<MeshRenderer>();
         ChangeState(new InactiveState());
     }
     private void OnDestroy()

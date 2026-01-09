@@ -19,7 +19,7 @@ public class ActiveState : IShooterState
 
     public void Exit()
     {
-
+        
     }
 
     public void Update()
