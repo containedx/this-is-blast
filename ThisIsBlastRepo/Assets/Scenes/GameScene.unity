@@ -595,7 +595,7 @@ MonoBehaviour:
   - tutorialView: {fileID: 4756258247891014056}
     level: 6
   - tutorialView: {fileID: 4308804639259907149}
-    level: 7
+    level: 9
 --- !u!1 &724494579
 GameObject:
   m_ObjectHideFlags: 0
@@ -1299,6 +1299,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 1bf1e1485fc70ff40b500e4f33042818, type: 2}
   - {fileID: 11400000, guid: 72e6fa097888f0343993c6d86bee9763, type: 2}
   - {fileID: 11400000, guid: 920cf2ff3330a2047b45b278100234b4, type: 2}
+  - {fileID: 11400000, guid: ca2303c8fa2fff34eaaf6820f0aa07b3, type: 2}
+  - {fileID: 11400000, guid: fece73564199a494e992a217f19dff38, type: 2}
   - {fileID: 11400000, guid: 89cea5d64cc33ac42a6f9030fcf44967, type: 2}
   currentLevelBlocks: []
 --- !u!1 &1895904819
