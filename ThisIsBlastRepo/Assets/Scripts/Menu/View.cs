@@ -44,7 +44,7 @@ public class View : MonoBehaviour
         yield return new WaitForSeconds(delay);
 
         float t = 0f;
-        const float duration = 0.8f;
+        const float duration = 0.5f;
 
         while (t < duration)
         {
