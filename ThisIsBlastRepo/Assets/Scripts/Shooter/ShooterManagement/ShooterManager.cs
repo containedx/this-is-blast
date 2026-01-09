@@ -65,12 +65,21 @@ public class ShooterManager : MonoBehaviour
             readySlots.slots[i].shooter.ChangeState(new ReadyState());
         }
 
-        index = readySlots.columnCount;
-        for (int i = 0; i < levelData.hiddenShootersCount; i++)
+        if(levelData.hiddenShootersCount > 0)
         {
-            readySlots.slots[index].shooter.ChangeState(new HiddenState());
-            //TODO: random index? check if not empty or sthhh
-            index++;
+            var columns = readySlots.columnCount;
+            var hiddenCount = levelData.hiddenShootersCount;
+            index = columns;
+            var shootersLeft = readySlots.slots.Count - columns;
+            bool random = true;
+            if (shootersLeft == hiddenCount) random = false;
+            for (int i = 0; i < hiddenCount; i++)
+            {
+                readySlots.slots[index].shooter.ChangeState(new HiddenState());
+                
+                if(random) index = Random.Range(columns, readySlots.slots.Count);
+                else index++;
+            }
         }
     }
 
