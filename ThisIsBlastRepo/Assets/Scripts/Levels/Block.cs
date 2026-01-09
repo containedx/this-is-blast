@@ -19,6 +19,8 @@ public class Block : MonoBehaviour
     //private Vector3 targetScale;
     private float moveSpeed = 10f;
 
+    public int rowIndex = 0;
+
     private void Awake()
     {
         alreadyShot = false;
@@ -40,7 +42,7 @@ public class Block : MonoBehaviour
         {
             transform.localPosition = Vector3.Lerp(transform.localPosition, targetPosition, moveSpeed * Time.deltaTime);
 
-            if (Vector3.Distance(transform.position, targetPosition) < 0.05f)
+            if (Vector3.Distance(transform.localPosition, targetPosition) < 0.05f)
             {
                 transform.localPosition = targetPosition;
                 moveDown = false;
@@ -51,7 +53,8 @@ public class Block : MonoBehaviour
     public void MoveDown()
     {
         moveDown = true;
-        targetPosition.z -= cellSize;
+        rowIndex--;
+        targetPosition.z = rowIndex * cellSize;
     }
 
     private bool alreadyShot = false;
@@ -75,6 +78,7 @@ public class Block : MonoBehaviour
 
         alreadyShot = true;
         ObjectPooler.Instance.SpawnFromPool(PoolObjectType.ShotParticle, transform.position, Quaternion.identity, 0.5f);
+        ObjectPooler.Instance.ReturnToPool(PoolObjectType.Projectile, projectile);
         onBlockShot?.Invoke(this);
         BeginRemoveBlock();
     }

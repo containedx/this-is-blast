@@ -38,6 +38,7 @@ public class LevelInitializer : MonoBehaviour
 
                 block.SetColor(color);
                 block.gameObject.name = "block" + row;
+                block.rowIndex = invertedRow;
                 columnBlocks.Add(block);
             }
 
