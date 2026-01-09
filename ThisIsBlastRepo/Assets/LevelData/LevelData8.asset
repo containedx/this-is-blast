@@ -20,8 +20,6 @@ MonoBehaviour:
     blockColor: 6
   - projectiles: 15
     blockColor: 6
-  - projectiles: 30
-    blockColor: 6
   - projectiles: 15
     blockColor: 6
   - projectiles: 15
@@ -35,10 +33,6 @@ MonoBehaviour:
   - projectiles: 15
     blockColor: 0
   - projectiles: 15
-    blockColor: 0
-  - projectiles: 15
-    blockColor: 0
-  - projectiles: 15
     blockColor: 5
   - projectiles: 15
     blockColor: 5
@@ -46,10 +40,6 @@ MonoBehaviour:
     blockColor: 5
   - projectiles: 15
     blockColor: 5
-  - projectiles: 15
-    blockColor: 5
-  - projectiles: 15
-    blockColor: 0
   doubleDeck: 1
   columns:
   - blocks: 060000000600000006000000000000000000000000000000050000000500000005000000

@@ -13,6 +13,7 @@ public class GameManager : MonoBehaviour
 
     public List<ColumnBlocks> currentLevelBlocks;
     private int currentLevelAllBlocksCount = 0;
+    [SerializeField]
     private int levelIndex = -1;
 
     public IGameState currentState { private set; get; }

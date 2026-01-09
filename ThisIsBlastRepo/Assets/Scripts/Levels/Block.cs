@@ -101,6 +101,7 @@ public class Block : MonoBehaviour
         {
             Destroy(secondDeck);
             onBlockShot?.Invoke(this);
+            ObjectPooler.Instance.ReturnToPool(PoolObjectType.Projectile, projectile);
             doubleDeck = false;
             return;
         }
