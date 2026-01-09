@@ -23,6 +23,12 @@ public class Block : MonoBehaviour
     private void Awake()
     {
         meshRenderer = GetComponent<MeshRenderer>();
+        alreadyShot = false;
+    }
+
+    private void Start()
+    {
+        targetPosition = transform.position;
     }
 
     private void OnDestroy()
@@ -49,10 +55,10 @@ public class Block : MonoBehaviour
     public void MoveDown()
     {
         moveDown = true;
-        targetPosition = transform.position;
         targetPosition.z -= cellSize;
     }
 
+    private bool alreadyShot = false;
     private void OnTriggerEnter(Collider collision)
     {
         var projectile = collision.gameObject.GetComponent<Projectile>();
@@ -60,10 +66,21 @@ public class Block : MonoBehaviour
 
         if (projectile.target == this)
         {
-            ObjectPooler.Instance.ReturnToPool(PoolObjectType.Projectile, collision.gameObject);
-            onBlockShot?.Invoke(this);
-            BeginRemoveBlock();
+            Shot(collision.gameObject);
         }
+    }
+
+    public void Shot(GameObject projectile)
+    {
+        if (alreadyShot)
+        {
+            return;
+        }
+
+        alreadyShot = true;
+        ObjectPooler.Instance.ReturnToPool(PoolObjectType.Projectile, projectile);
+        onBlockShot?.Invoke(this);
+        BeginRemoveBlock();
     }
 
     public void SetColor(BlockColor color)

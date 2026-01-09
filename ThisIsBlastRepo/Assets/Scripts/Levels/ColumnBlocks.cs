@@ -17,9 +17,6 @@ public class ColumnBlocks
         {
             block.onBlockShot.AddListener(OnBlockShot);
         }
-
-        // it is enough to listen to one block finishing moving down
-        blocks[0].onMoveDownFinished.AddListener(FinishProcessing);
     }
 
     public int GetBlocksCount()
@@ -54,6 +51,7 @@ public class ColumnBlocks
     {
         blocks.Remove(block);
         MoveColumnDown();
+        FinishProcessing();
     }
 
     private void MoveColumnDown()

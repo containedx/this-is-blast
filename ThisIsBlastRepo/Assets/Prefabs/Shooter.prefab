@@ -559,7 +559,7 @@ MonoBehaviour:
       m_Calls: []
   projectilesCount: 20
   blockColor: 0
-  cooldownTime: 0.1
+  cooldownTime: 0.05
   projectilePrefab: {fileID: 3118363972341836695, guid: ccd4a8b2b2fb7664f8f2576674963346, type: 3}
   activateButton: {fileID: 1966305135775647325}
   countText: {fileID: 7286759085249965571}
