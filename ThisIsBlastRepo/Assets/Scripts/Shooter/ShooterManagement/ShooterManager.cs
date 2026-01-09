@@ -64,6 +64,14 @@ public class ShooterManager : MonoBehaviour
         {
             readySlots.slots[i].shooter.ChangeState(new ReadyState());
         }
+
+        index = readySlots.columnCount;
+        for (int i = 0; i < levelData.hiddenShootersCount; i++)
+        {
+            readySlots.slots[index].shooter.ChangeState(new HiddenState());
+            //TODO: random index? check if not empty or sthhh
+            index++;
+        }
     }
 
     public void OnShooterActivate(Shooter shooter)

@@ -8,6 +8,7 @@ public class LevelData : ScriptableObject
     [Header("Shooters Data")]
     public int activeShootersCount = 5;
     public int readyShootersColumnsCount = 3;
+    public int hiddenShootersCount = 0;
     public List<ShooterData> shooters;
 
     [Header("Blocks Data")]

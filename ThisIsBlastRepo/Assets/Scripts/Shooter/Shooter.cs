@@ -27,6 +27,7 @@ public class Shooter : MonoBehaviour
     [SerializeField] private Color inactiveTextColor;
     [SerializeField] private BlockMaterials materials;
     [SerializeField] private Image readyOutline;
+    [SerializeField] private GameObject hidden;
     [SerializeField] private MeshRenderer meshRenderer;
 
     [NonSerialized]
@@ -36,6 +37,7 @@ public class Shooter : MonoBehaviour
 
     private void Awake()
     {
+        DeactivateHiddenUI();
         ChangeState(new InactiveState());
     }
     private void OnDestroy()
@@ -89,6 +91,18 @@ public class Shooter : MonoBehaviour
         ActivateOutline(false);
         countText.color = activeTextColor;
     }
+
+    public void ActivateHiddenUI()
+    {
+        meshRenderer.gameObject.SetActive(false);
+        hidden.SetActive(true);
+    }
+    public void DeactivateHiddenUI()
+    {
+        meshRenderer.gameObject.SetActive(true);
+        hidden.SetActive(false);
+    }
+
 
     private void ActivateOutline(bool value)
     {

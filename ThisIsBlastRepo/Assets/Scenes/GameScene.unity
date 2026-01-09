@@ -1235,6 +1235,7 @@ MonoBehaviour:
   LevelInitializer: {fileID: 1666039937}
   ShooterManager: {fileID: 746062237}
   levelData:
+  - {fileID: 11400000, guid: 89cea5d64cc33ac42a6f9030fcf44967, type: 2}
   - {fileID: 11400000, guid: b4f89005bb519b44a8df13a464ede656, type: 2}
   - {fileID: 11400000, guid: ef62b72bbf52dab4aa1600a797b227c5, type: 2}
   - {fileID: 11400000, guid: c111de794eb5f824e922a19a43676219, type: 2}
