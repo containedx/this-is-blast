@@ -4,7 +4,7 @@ using UnityEngine;
 public class MergeState : IShooterState
 {
     private Vector3 targetPosition = Vector3.zero;
-    private float speed = 4f;
+    private float speed = 8f;
     private Shooter shooter;
 
     private bool middle = false;
