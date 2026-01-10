@@ -10,7 +10,9 @@ public enum BlockColor
     Orange,
     Purple,
     White,
-    Black
+    Black,
+    Cyan,
+    Beige
 }
 
 
@@ -26,6 +28,8 @@ public class BlockMaterials : ScriptableObject
     public Material purple;
     public Material white;
     public Material black;
+    public Material cyan;
+    public Material beige;
 
     public Material GetMaterial(BlockColor color)
     {
@@ -40,6 +44,8 @@ public class BlockMaterials : ScriptableObject
             BlockColor.Orange => orange,
             BlockColor.White => white,  
             BlockColor.Black => black,
+            BlockColor.Cyan => cyan,
+            BlockColor.Beige => beige,
             _ => red
         };
     }

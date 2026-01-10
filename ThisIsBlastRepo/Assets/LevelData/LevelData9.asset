@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::LevelData
   activeShootersCount: 3
   readyShootersColumnsCount: 3
-  hiddenShootersCount: 4
+  hiddenShootersCount: 7
   shooters:
   - projectiles: 20
     blockColor: 3
@@ -30,6 +30,7 @@ MonoBehaviour:
     blockColor: 1
   - projectiles: 20
     blockColor: 3
+  doubleDeck: 0
   columns:
   - blocks: 0300000003000000050000000500000001000000010000000100000001000000030000000300000005000000050000000300000003000000
   - blocks: 0300000003000000050000000500000001000000010000000100000001000000030000000300000005000000050000000300000003000000

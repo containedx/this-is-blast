@@ -31,6 +31,7 @@ public class LevelDataEditor : Editor
                     blockCounts[block] = 0;
 
                 blockCounts[block]++;
+                if(data.doubleDeck) blockCounts[block]++;
             }
         }
 

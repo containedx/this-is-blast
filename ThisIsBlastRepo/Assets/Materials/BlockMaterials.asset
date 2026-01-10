@@ -21,3 +21,5 @@ MonoBehaviour:
   purple: {fileID: 2100000, guid: 909742721a9ad5a43bdb912c6d974ff4, type: 2}
   white: {fileID: 2100000, guid: e9c3ecfebfcbb964fbc4a5caca8b380b, type: 2}
   black: {fileID: 2100000, guid: 86d4532e98ca72242b5eb11cd6d51725, type: 2}
+  cyan: {fileID: 2100000, guid: 84bcc2aa5a8b7eb4a9dedf93c628f355, type: 2}
+  beige: {fileID: 2100000, guid: 5d61368ae18480041b78289270a77a38, type: 2}

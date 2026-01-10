@@ -704,9 +704,9 @@ MonoBehaviour:
   - tutorialView: {fileID: 9115062836556679903}
     level: 4
   - tutorialView: {fileID: 4756258247891014056}
-    level: 6
+    level: 7
   - tutorialView: {fileID: 4308804639259907149}
-    level: 9
+    level: 10
 --- !u!1 &724494579
 GameObject:
   m_ObjectHideFlags: 0
@@ -1403,12 +1403,12 @@ MonoBehaviour:
   LevelInitializer: {fileID: 1666039937}
   ShooterManager: {fileID: 746062237}
   levelData:
-  - {fileID: 11400000, guid: 0556523d2f1998341b75b404179b4871, type: 2}
   - {fileID: 11400000, guid: b4f89005bb519b44a8df13a464ede656, type: 2}
   - {fileID: 11400000, guid: ef62b72bbf52dab4aa1600a797b227c5, type: 2}
   - {fileID: 11400000, guid: c111de794eb5f824e922a19a43676219, type: 2}
   - {fileID: 11400000, guid: 22380f056cf03a849aac28bf73f435e1, type: 2}
   - {fileID: 11400000, guid: 1bf1e1485fc70ff40b500e4f33042818, type: 2}
+  - {fileID: 11400000, guid: 0556523d2f1998341b75b404179b4871, type: 2}
   - {fileID: 11400000, guid: 72e6fa097888f0343993c6d86bee9763, type: 2}
   - {fileID: 11400000, guid: 920cf2ff3330a2047b45b278100234b4, type: 2}
   - {fileID: 11400000, guid: ca2303c8fa2fff34eaaf6820f0aa07b3, type: 2}
@@ -1417,6 +1417,11 @@ MonoBehaviour:
   - {fileID: 11400000, guid: a7abd93d259f30047a1c788dffdfdc32, type: 2}
   - {fileID: 11400000, guid: 753c073c171afaa46ab40de2058782ad, type: 2}
   - {fileID: 11400000, guid: d17fccffc1c624c4ca40149214a7c120, type: 2}
+  - {fileID: 11400000, guid: 3f01c3d6cad19c04eac21ea5790ea3d4, type: 2}
+  - {fileID: 11400000, guid: 7f00ddaa9428929499980cc44522d59a, type: 2}
+  - {fileID: 11400000, guid: 4bf70b4e642210648baadb8e2633fece, type: 2}
+  - {fileID: 11400000, guid: 0288f9fd5b67a4f4b8182509c8e2beea, type: 2}
+  - {fileID: 11400000, guid: 4a224c6b2c5827948814a45689e206ea, type: 2}
   currentLevelBlocks: []
   levelIndex: -1
 --- !u!1 &1895904819
