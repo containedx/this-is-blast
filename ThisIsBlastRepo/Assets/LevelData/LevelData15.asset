@@ -13,33 +13,41 @@ MonoBehaviour:
   m_Name: LevelData15
   m_EditorClassIdentifier: Assembly-CSharp::LevelData
   activeShootersCount: 5
-  readyShootersColumnsCount: 3
+  readyShootersColumnsCount: 4
   hiddenShootersCount: 6
   shooters:
-  - projectiles: 20
+  - projectiles: 10
     blockColor: 0
-  - projectiles: 15
+  - projectiles: 10
     blockColor: 4
   - projectiles: 15
     blockColor: 2
-  - projectiles: 20
+  - projectiles: 10
     blockColor: 3
   - projectiles: 15
     blockColor: 1
   - projectiles: 20
     blockColor: 5
-  - projectiles: 20
+  - projectiles: 10
     blockColor: 9
   - projectiles: 20
     blockColor: 6
   - projectiles: 15
     blockColor: 1
-  - projectiles: 15
+  - projectiles: 10
     blockColor: 4
   - projectiles: 15
     blockColor: 2
   - projectiles: 15
     blockColor: 0
+  - projectiles: 15
+    blockColor: 0
+  - projectiles: 10
+    blockColor: 3
+  - projectiles: 10
+    blockColor: 9
+  - projectiles: 10
+    blockColor: 4
   doubleDeck: 0
   columns:
   - blocks: 0000000000000000040000000400000000000000000000000200000002000000040000000400000003000000030000000100000001000000050000000500000003000000030000000000000000000000
