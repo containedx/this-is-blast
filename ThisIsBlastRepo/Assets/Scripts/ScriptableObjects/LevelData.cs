@@ -9,11 +9,11 @@ public class LevelData : ScriptableObject
     public int activeShootersCount = 5;
     public int readyShootersColumnsCount = 3;
     public int hiddenShootersCount = 0;
-    public List<ShooterData> shooters;
+    public List<ShooterData> shooters = new List<ShooterData>();
 
     [Header("Blocks Data")]
     public bool doubleDeck = false;
-    public List<ColumnData> columns; 
+    public List<ColumnData> columns = new List<ColumnData>(); 
 }
 
 [System.Serializable]
