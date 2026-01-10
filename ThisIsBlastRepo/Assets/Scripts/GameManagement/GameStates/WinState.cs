@@ -31,6 +31,7 @@ public class WinState : IGameState
         max = TutorialManager.Instance.GetNextFeatureIndex() - 1;
         slider.maxValue = max;
         target = game.GetLevelIndex();
+        if (target == min) target = 1;
         slider.value = min;
 
         View.Get<WinScreen>().newFeatureText.text = "New Feature";

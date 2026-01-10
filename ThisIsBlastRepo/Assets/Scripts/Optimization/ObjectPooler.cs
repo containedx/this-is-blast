@@ -5,7 +5,9 @@ using UnityEngine;
 public enum PoolObjectType
 {
     Projectile,
-    ShotParticle
+    ShotParticle,
+    SoundEffectBlock,
+    SoundEffectShooter
 }
 
 public class ObjectPooler : MonoBehaviour

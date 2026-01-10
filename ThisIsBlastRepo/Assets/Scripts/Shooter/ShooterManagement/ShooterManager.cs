@@ -170,7 +170,7 @@ public class ShooterManager : MonoBehaviour
     private IEnumerator StartMerge(BlockColor color)
     {
         isMerging = true;
-        yield return new WaitForSeconds(0.8f);
+        yield return new WaitForSeconds(0.6f);
         Merge(color);
     }
 

@@ -23,6 +23,7 @@ public class ReadyState : IShooterState
 
     private void Activate()
     {
+        ObjectPooler.Instance.SpawnFromPool(PoolObjectType.SoundEffectShooter, Vector3.zero);
         shooter.levelBlocks = GameManager.Instance.currentLevelBlocks;
         shooter.OnActivate?.Invoke(shooter);
     }

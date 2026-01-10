@@ -97,7 +97,9 @@ public class Block : MonoBehaviour
             return;
         }
 
-        if(doubleDeck)
+        ObjectPooler.Instance.SpawnFromPool(PoolObjectType.SoundEffectBlock, Vector3.zero);
+
+        if (doubleDeck)
         {
             Destroy(secondDeck);
             onBlockShot?.Invoke(this);
